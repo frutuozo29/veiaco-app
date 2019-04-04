@@ -8,7 +8,6 @@ class Main extends Component {
     collapsed: false
   };
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
   render() {
