@@ -1,13 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
-import Dashboard from "../pages/Dashboard";
-import Sobre from "../pages/Sobre";
+import Dashboard from "../components/pages/Dashboard";
+import Sobre from "../components/pages/Sobre";
 
-export default props => (
-  <Router>
+export default () => (
+  <Switch>
     <Route exact path="/" component={Dashboard} />
     <Route exact path="/dashboard" component={Dashboard} />
     <Route exact path="/sobre" component={Sobre} />
-  </Router>
+    <Route exact path="*" component={Dashboard} />
+  </Switch>
 );
