@@ -6,6 +6,7 @@ import Sobre from "../pages/Sobre";
 
 export default props => (
   <Router>
+    <Route exact path="/" component={Dashboard} />
     <Route exact path="/dashboard" component={Dashboard} />
     <Route exact path="/sobre" component={Sobre} />
   </Router>

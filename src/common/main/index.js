@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
+
+import Routes from "../../routes";
+
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
@@ -56,7 +59,7 @@ class Main extends Component {
               <Breadcrumb.Item>Cadastro</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-              Veiaco front-end
+              <Routes />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>Renan Frutuozo ©2019</Footer>
