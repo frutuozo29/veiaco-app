@@ -26,7 +26,7 @@ class SiderMenu extends Component {
             key="sub1"
             title={
               <span>
-                <Icon type="user" />
+                <Icon type="form" />
                 <span>Cadastro</span>
               </span>
             }
@@ -42,6 +42,11 @@ class SiderMenu extends Component {
           <Menu.Item key="3" className="menuitem">
             <Icon type="desktop" />
             <span>Movimentação</span>
+          </Menu.Item>
+          <Menu.Item key="4" className="menuitem">
+            <Icon type="user" />
+            <span>Usuários</span>
+            <Link to="/users" />
           </Menu.Item>
         </Menu>
       </Sider>
