@@ -1,89 +1,58 @@
 import React, { Component } from "react";
 
-import { Table, Divider, Tag } from "antd";
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userActions from '../../../actions/user'
+
+import { Table, Spin } from "antd";
 
 const columns = [
   {
     title: "Name",
     dataIndex: "name",
-    key: "name",
-    render: text => <a href="/#">{text}</a>
+    key: "name"
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age"
+    title: "Email",
+    dataIndex: "email",
+    key: "email"
   },
   {
-    title: "Address",
-    dataIndex: "address",
-    key: "address"
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: tags => (
-      <span>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </span>
-    )
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <span>
-        <a href="/#">Invite {record.name}</a>
-        <Divider type="vertical" />
-        <a href="/#">Delete</a>
-      </span>
-    )
-  }
-];
-
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"]
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"]
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    title: "User Name",
+    dataIndex: "username",
+    key: "username"
   }
 ];
 
 class Users extends Component {
+  componentWillMount() {
+    const { getUsers } = this.props
+
+    getUsers()
+  }
+
   render() {
+    const { items, isGetting } = this.props
     return (
-      <div>
-        <Table columns={columns} dataSource={data} size="middle" />
-      </div>
+      <section>
+        {(() => {
+          if (isGetting)
+            return <Spin tip="Loading..." size="large" />
+          else
+            return <Table rowKey="_id" columns={columns} dataSource={items} size="middle" />
+        })()}
+      </section>
+
     );
   }
 }
 
-export default Users;
+const mapStateToProps = ({ user }) => ({
+  isGetting: user.isGetting,
+  hasGetError: user.hasGetError,
+  items: user.items
+})
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(userActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

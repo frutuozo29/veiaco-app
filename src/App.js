@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Layout style={{ minHeight: "100vh" }}>
+          <Layout style={{ minHeight: '100vh' }}>
             <SiderMenu />
             <Layout>
               <Header style={{ background: "#fff", padding: 0 }} />
