@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "set NODE_ENV=development && nodemon index.js",
-    "test": "jest --runInBand --coverage",
-    "test:watch": "jest --coverage --watchAll"
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
   },
   "author": "Renan Frutuozo",
   "license": "ISC",
@@ -22,12 +22,7 @@
     "npm": "6.2.0"
   },
   "devDependencies": {
-    "jest": "^24.5.0"
-  },
-  "jest": {
-    "coverageReporters": [
-      "html",
-      "text"
-    ]
+    "jest": "^24.5.0",
+    "mockingoose": "^2.13.0"
   }
 }

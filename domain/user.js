@@ -3,28 +3,28 @@ const UserModel = require("../models/user");
 
 module.exports.authenticate = async (user, password) => {
   try {
-    if (user == "admin") {
+    if (user === "admin") {
       return Promise.resolve({
         _id: "bdbaeb10-9203-4e1f-93f1-ad12c32ac1bb",
-        user,
+        username: user,
         password
       });
     }
 
-    let userbd = await this.readByUsername(user);
+    let userbd = await UserModel.findOne({ username: user });
     if (userbd) {
-      if (userbd[0].password !== password) {
+      if (userbd.password !== password) {
         throw "Username or password is invalid";
       }
     }
 
     return Promise.resolve({
       _id: userbd._id,
-      user: userbd.username,
+      username: userbd.username,
       password: userbd.password
     });
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    Promise.reject(new Error(err));
   }
 };
 
@@ -70,7 +70,7 @@ module.exports.readById = async id => {
 module.exports.readByUsername = async username => {
   try {
     let query = { username: username };
-    const user = await UserModel.find(query);
+    const user = await UserModel.findOne(query);
     return user;
   } catch (err) {
     throw err;
