@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as userActions from '../../../actions/user'
+import * as userActions from '../../actions/user'
 
 import { Table, Spin } from "antd";
 
