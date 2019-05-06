@@ -36,7 +36,7 @@ class SiderMenu extends Component {
               <Link to="/dashboard">Receitas</Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/sobre">Despesas</Link>
+              <Link to="">Despesas</Link>
             </Menu.Item>
           </SubMenu>
           <Menu.Item key="3" className="menuitem">
@@ -46,7 +46,7 @@ class SiderMenu extends Component {
           <Menu.Item key="4" className="menuitem">
             <Icon type="user" />
             <span>Usuários</span>
-            <Link to="/users" />
+            <Link to="/user" />
           </Menu.Item>
         </Menu>
       </Sider>
