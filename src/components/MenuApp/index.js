@@ -5,7 +5,7 @@ import { Layout, Menu, Icon } from "antd";
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
-class SiderMenu extends Component {
+class MenuApp extends Component {
   state = {
     collapsed: false
   };
@@ -54,4 +54,4 @@ class SiderMenu extends Component {
   }
 }
 
-export default SiderMenu;
+export default MenuApp;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Layout } from "antd";
-import SiderMenu from "./components/SiderMenu";
+import MenuApp from "./components/MenuApp";
 import Routes from "./routes";
 
 const { Header, Content, Footer } = Layout;
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div>
         <Layout style={{ minHeight: '100vh' }}>
-          <SiderMenu />
+          <MenuApp />
           <Layout>
             <Header style={{ background: "#fff", padding: 0 }} />
             <Content style={{ margin: "5px 16px" }}>
