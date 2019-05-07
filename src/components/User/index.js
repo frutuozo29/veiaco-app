@@ -1,26 +1,39 @@
 import React, { Component } from "react";
 
+import { Link } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user'
 
-import { Table, Spin } from "antd";
+import { Table, Button } from "antd";
 
 const columns = [
   {
-    title: "Name",
+    title: "Nome",
     dataIndex: "name",
     key: "name"
   },
   {
-    title: "Email",
+    title: "E-mail",
     dataIndex: "email",
     key: "email"
   },
   {
-    title: "User Name",
+    title: "Usuário",
     dataIndex: "username",
     key: "username"
+  },
+  {
+    title: '',
+    dataIndex: '',
+    key: 'x',
+    render: () => (
+      <>
+        <Button shape="circle" icon="edit" />
+        <Button shape="circle" icon="delete" />
+      </>
+    )
   }
 ];
 
@@ -32,25 +45,20 @@ class Users extends Component {
   }
 
   render() {
-    const { items, isGetting } = this.props
+    const { users, isGetting } = this.props
     return (
-      <section>
-        {(() => {
-          if (isGetting)
-            return <Spin tip="Loading..." size="large" />
-          else
-            return <Table rowKey="_id" columns={columns} dataSource={items} size="middle" />
-        })()}
-      </section>
-
-    );
+      <>
+        <Button type="primary" style={{ marginBottom: 5 }}><Link to="/createuser">Novo usuário</Link></Button>
+        <Table loading={isGetting} rowKey="_id" columns={columns} dataSource={users} size="middle" />
+      </>
+    )
   }
 }
 
 const mapStateToProps = ({ user }) => ({
   isGetting: user.isGetting,
   hasGetError: user.hasGetError,
-  items: user.items
+  users: user.items
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(userActions, dispatch)

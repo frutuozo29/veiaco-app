@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon, Avatar } from "antd";
 
 const { Sider } = Layout;
-const SubMenu = Menu.SubMenu;
+const { SubMenu } = Menu;
 
 class MenuApp extends Component {
   state = {
@@ -13,6 +13,7 @@ class MenuApp extends Component {
   onCollapse = collapsed => {
     this.setState({ collapsed });
   };
+
   render() {
     return (
       <Sider
@@ -20,7 +21,9 @@ class MenuApp extends Component {
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
       >
-        <div className="logo" />
+        <div style={{ marginTop: 20, textAlign: "center" }} >
+          <Avatar size={this.state.collapsed ? 30 : 90} icon="user" />
+        </div>
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <SubMenu
             key="sub1"
