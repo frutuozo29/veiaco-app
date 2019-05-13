@@ -14,9 +14,10 @@ describe('MenuApp', () => {
   })
 
   test('renders the component collapsed', () => {
-    const { getByTestId, container } = render(<Router><MenuApp /></Router>)
+    const { getByTestId, container, debug } = render(<Router><MenuApp /></Router>)
 
     fireEvent.click(getByTestId('menu-app'))
+    debug(container.querySelector('[class="ant-layout-sider-collapsed"]'))
     expect(container.querySelector('[class="ant-layout-sider-collapsed"]')).toBeInTheDocument()
   })
 })
