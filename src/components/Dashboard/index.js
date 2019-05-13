@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Dashboard extends Component {
-  render() {
-    return <div>Dashboard</div>;
-  }
-}
+const Dashboard = () => (
+  <div data-testid="dashboard">
+    Dashboard
+  </div>
+)
 
 export default Dashboard;

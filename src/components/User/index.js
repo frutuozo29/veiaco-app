@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import { Link } from 'react-router-dom'
 
@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userActions from '../../actions/user'
 
-import { Table, Button } from "antd";
+import { PageHeader, Table, Button } from "antd";
 
 const columns = [
   {
@@ -30,7 +30,7 @@ const columns = [
     key: 'x',
     render: () => (
       <>
-        <Button shape="circle" icon="edit" />
+        <Button shape="circle" hint="Teste" icon="edit" />
         <Button shape="circle" icon="delete" />
       </>
     )
@@ -47,10 +47,11 @@ class Users extends Component {
   render() {
     const { users, isGetting } = this.props
     return (
-      <>
+      <Fragment data-testid="user">
+        <PageHeader title="Usuários" subTitle="Manutenção de novos usuários"></PageHeader>
         <Button type="primary" style={{ marginBottom: 5 }}><Link to="/createuser">Novo usuário</Link></Button>
         <Table loading={isGetting} rowKey="_id" columns={columns} dataSource={users} size="middle" />
-      </>
+      </Fragment>
     )
   }
 }

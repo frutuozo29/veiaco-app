@@ -1,28 +1,22 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout, Menu, Icon, Avatar } from "antd";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-class MenuApp extends Component {
-  state = {
-    collapsed: false
-  };
+const MenuApp = () => {
+  const [collapsed, setCollapsed] = useState(false)
 
-  onCollapse = collapsed => {
-    this.setState({ collapsed });
-  };
-
-  render() {
     return (
       <Sider
+        data-testid="menu-app"
         collapsible
-        collapsed={this.state.collapsed}
-        onCollapse={this.onCollapse}
+        collapsed={collapsed}
+        onCollapse={() => setCollapsed(!collapsed)}
       >
         <div style={{ marginTop: 20, textAlign: "center" }} >
-          <Avatar size={this.state.collapsed ? 30 : 90} icon="user" />
+          <Avatar size={collapsed ? 30 : 90} icon="user" />
         </div>
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <SubMenu
@@ -54,7 +48,6 @@ class MenuApp extends Component {
         </Menu>
       </Sider>
     );
-  }
 }
 
 export default MenuApp;

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as userActions from '../../../../actions/user'
 
 // antd 
-import { Form, Input, Button } from 'antd';
+import { PageHeader, Form, Input, Button } from 'antd';
 import { Row, Col } from 'antd';
 
 class UserForm extends Component {
@@ -27,6 +27,7 @@ class UserForm extends Component {
     const { user } = this.props
     return (
       <>
+        <PageHeader title="Usuários" subTitle="Manutenção de novos usuários"></PageHeader>
         <Form>
           <Row>
             <Col span={12}>
@@ -59,7 +60,7 @@ class UserForm extends Component {
           <Row>
             <Col span={12}>
               <Form.Item label="Senha">
-                <Input.Password alue={user.password} name="password" onChange={this.HandleChange.bind(this)}></Input.Password>
+                <Input.Password value={user.password} name="password" onChange={this.HandleChange.bind(this)}></Input.Password>
               </Form.Item>
             </Col>
           </Row>
