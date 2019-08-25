@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import { apiBaseUrl } from '../actions'
 
 export const getUsersRequest = () => ({ type: 'GET_USERS_REQUEST' })
