@@ -3,10 +3,14 @@ import React from 'react'
 // Routes
 import Routes from '../../routes'
 
+// styles
+import { GlobalStyle, Container } from './styles'
+
 export const App = () => (
-  <div>
+  <Container>
+    <GlobalStyle />
     <Routes />
-  </div>
+  </Container>
 )
 
 export default App
