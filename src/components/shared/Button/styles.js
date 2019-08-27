@@ -10,4 +10,12 @@ export const ButtonStyled = styled.button`
   width: ${({ width }) => width || '48px'};
   height: ${({ height }) => height || '36px'};
   background-color: ${({ backgroundColor }) => backgroundColor || '#F2681C'};
+
+  &:hover {
+    box-shadow: 0 0 3px 0 #FFF;
+  }
+
+  &:active {
+    box-shadow: 0 0 3px 0 #FFF inset;
+  }
 `

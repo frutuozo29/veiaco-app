@@ -20,13 +20,16 @@ export const Login = () => (
     </ContentLogo>
     <ContentLogin>
       <div className='login'>
-        <h2>Welcome</h2>
-        <p>Let's join to the fun, login now</p>
+        <div>
+          <h2>Welcome</h2>
+          <p>Let's join to the fun, login now</p>
+        </div>
         <div>
           <Input
             label='Username'
             name='username'
             width='280px'
+            autoComplete='off'
           />
           <Input
             label='Password'
@@ -34,8 +37,8 @@ export const Login = () => (
             width='280px'
             type='password'
           />
+          <Button width='280px'>Login</Button>
         </div>
-        <Button width='200px'>Login</Button>
         <a href='/'>Forgotten your password?</a>
       </div>
     </ContentLogin>

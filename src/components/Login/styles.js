@@ -6,6 +6,12 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: #001F24;
+
+  @media (max-width: 768px) { 
+    grid-template-columns: none;
+    grid-template-rows: auto 1fr;
+    align-content: center;
+  }
 `
 
 export const ContentLogo = styled.div`
@@ -21,6 +27,12 @@ export const ContentLogo = styled.div`
     height: 480px;
     border-right: 2px solid gray;
     padding: 20px 80px;
+
+    @media (max-width: 768px) { 
+      height: 140px;
+      border: none;
+      padding: 0;
+    }
 
     > img {
       width: 60px;
@@ -41,24 +53,36 @@ export const ContentLogin = styled.div`
 
   .login {
     display: grid;
-    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-rows: auto 1fr auto;
     grid-gap: 20px;
     align-self: center;
     justify-items: center;
     width: 100%;
     height: 480px;
-    padding: 20px 80px;
+    padding: 32px 80px;
 
-    > h2 {
-      align-self: center;
-      font-size: 26px;
+    @media (max-width: 768px) { 
+      padding: 0 16px;
     }
 
-    > div {
+    > div:nth-child(1) {
       display: flex;
       flex-direction: column;
-      align-content: space-between;
-      padding: 70px 0;
+      
+      > h2 {
+        align-self: center;
+        font-size: 26px;
+        margin-bottom: 30px;
+      }  
+    }
+
+
+    > div:nth-child(2) {
+      display: grid;
+      grid-gap: 20px;
+      justify-content: center;
+      align-self: center;
+      grid-auto-rows: min-content;
     }
 
     > a {
