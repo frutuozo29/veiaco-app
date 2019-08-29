@@ -63,6 +63,8 @@ export const ContentLogin = styled.div`
 
     @media (max-width: 768px) { 
       padding: 0 16px;
+      height: auto;
+      align-self: flex-start;
     }
 
     > div:nth-child(1) {
