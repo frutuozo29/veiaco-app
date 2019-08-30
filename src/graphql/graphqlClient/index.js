@@ -1,15 +1,19 @@
 /* eslint-env browser */
-export default (url, body, token) => {
+export default (url, query, token) => {
   const headers = {
     Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/graphql'
+    'Content-Type': 'application/json'
   }
 
   return (
     fetch(url, {
       method: 'POST',
       headers: (headers || {}),
-      body: JSON.stringify({ body })
-    }).then((response) => response.json())
+      body: JSON.stringify({ query })
+    }).then((response) => {
+      console.log(response)
+      return response.json()
+      
+      })
   )
 }

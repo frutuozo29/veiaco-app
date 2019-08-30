@@ -14,7 +14,6 @@ export const loginUser = (username, password) => (dispatch) => {
   dispatch(loginRequest())
 
   return graphqlClient(apiBaseUrl, login(username, password))
-    .then((response) => console.log(response))
-    // .then(({ data: { login: token } }) => loginSuccess(token))
-    .catch(() => loginError())
+    .then(({ data: { login: token } }) => dispatch(loginSuccess(token)))
+    .catch(() => dispatch(loginError()))
 }
