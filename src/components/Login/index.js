@@ -46,10 +46,7 @@ export const Login = () => {
               width='280px'
               autoComplete='off'
               value={username}
-              onChange={({ target: { value } }) => {
-                console.log(value)
-                setUsername(value)
-              }}
+              onChange={({ target: { value } }) => setUsername(value)}
             />
             <Input
               label='Password'
@@ -57,10 +54,7 @@ export const Login = () => {
               width='280px'
               type='password'
               value={password}
-              onChange={({ target: { value } }) => {
-                console.log(value)
-                setPassword(value)
-              }}
+              onChange={({ target: { value } }) => setPassword(value)}
             />
             <Button
               width='280px'

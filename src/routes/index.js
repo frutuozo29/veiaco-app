@@ -1,11 +1,37 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
-// Components
 import Login from '../components/Login'
 
-export default () => (
+const requireLogin = (history) => {
+
+}
+
+const PrivateRoute = ({ component: Component, ...props }) => {
+  return (
+    <Route
+      {...props}
+      render={props =>
+        getToken('jwt-cdh') ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
+const Routes = ({ history }) => (
   <Switch>
-    <Route exact path='/' component={Login} />
+    <Route exact path='/login' component={Login} />
+    <PrivateRoute exact path='*' component={Login} />
   </Switch>
 )
+
+export default Routes

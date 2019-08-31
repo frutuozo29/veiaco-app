@@ -6,6 +6,12 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
+    case 'GET_TOKEN':
+      const token = window.sessionStorage.getItem('token') || ''
+      return {
+        ...state,
+        token
+      }
     case 'SET_TOKEN':
       return {
         ...state,
