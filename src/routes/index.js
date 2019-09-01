@@ -1,18 +1,23 @@
 import React from 'react'
+
+// redux
+import { useSelector } from 'react-redux'
+
+// react-router-dom
 import { Switch, Route, Redirect } from 'react-router-dom'
 
+// components
 import Login from '../components/Login'
-
-const requireLogin = (history) => {
-
-}
+import Dashboard from '../components/Dashboard'
 
 const PrivateRoute = ({ component: Component, ...props }) => {
+  const token = useSelector(({ user }) => user.token)
+
   return (
     <Route
       {...props}
       render={props =>
-        getToken('jwt-cdh') ? (
+        token ? (
           <Component {...props} />
         ) : (
           <Redirect
@@ -30,7 +35,8 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 const Routes = ({ history }) => (
   <Switch>
     <Route exact path='/login' component={Login} />
-    <PrivateRoute exact path='*' component={Login} />
+    <PrivateRoute exact path='/' component={Dashboard} />
+    <PrivateRoute exact path='*' component={Dashboard} />
   </Switch>
 )
 

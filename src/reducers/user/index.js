@@ -1,18 +1,20 @@
 const initialState = {
   loading: false,
   error: false,
-  token: ''
+  token: '',
+  user: {}
 }
 
 const user = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_TOKEN':
-      const token = window.sessionStorage.getItem('token') || ''
+      const token = window.localStorage.getItem('veiaco-token') || ''
       return {
         ...state,
         token
       }
     case 'SET_TOKEN':
+      window.localStorage.setItem('veiaco-token', action.token)
       return {
         ...state,
         token: action.token
@@ -28,6 +30,12 @@ const user = (state = initialState, action) => {
         ...state,
         loading: false,
         error: true
+      }
+    case 'LOGOUT':
+      window.localStorage.removeItem('veiaco-token')
+      return {
+        ...state,
+        token: ''
       }
     default:
       return state

@@ -4,6 +4,8 @@ import { apiBaseUrl } from '../../actions'
 import graphqlClient from '../../graphql/graphqlClient'
 import { login } from '../../graphql/mutations/user'
 
+export const getToken = () => ({ type: 'GET_TOKEN' })
+
 export const loginRequest = () => ({ type: 'LOGIN_REQUEST' })
 
 export const loginSuccess = (token) => ({ type: 'SET_TOKEN', token })
@@ -16,10 +18,10 @@ export const loginUser = (username, password) => (dispatch) => {
   return graphqlClient(apiBaseUrl, login(username, password))
     .then(({ login: token }) => {
       dispatch(loginSuccess(token))
-      console.log('sucesso', token)
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch(loginError())
-      console.log('catch', error)
     })
 }
+
+export const logout = () => ({ type: 'LOGOUT' })

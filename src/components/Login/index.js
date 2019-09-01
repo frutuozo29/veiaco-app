@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // redux
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // actions
 import * as userActions from '../../actions/user'
@@ -16,14 +16,14 @@ import { Container, ContentLogo, ContentLogin } from './styles'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 
-export const Login = () => {
+export const Login = ({ history }) => {
   const dispatch = useDispatch()
+  const token = useSelector(({ user }) => user.token)
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = () => {
-    dispatch(userActions.loginUser(username, password))
-  }
+  useEffect(() => { token && history.push('/') }, [token])
 
   return (
     <Container>
@@ -58,7 +58,7 @@ export const Login = () => {
             />
             <Button
               width='280px'
-              onClick={() => handleLogin()}
+              onClick={() => dispatch(userActions.loginUser(username, password))}
             >
               Login
             </Button>

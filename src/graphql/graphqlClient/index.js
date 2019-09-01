@@ -13,12 +13,9 @@ export default (url, query, token) => {
     })
       .then((response) => response.json())
       .then(({ data, errors }) => {
-        console.log('inicio', errors)
         if (!!errors) { // eslint-disable-line
-          console.log('passou aqui thow', errors)
           throw errors
         }
-        console.log('erro e passou aqui', data)
         return data
       })
   )
