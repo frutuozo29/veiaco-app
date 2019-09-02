@@ -24,13 +24,13 @@ export const Dashboard = () => {
       </Topbar>
       <Menu>
         <div>
-          <h2>Bem vindo, Renan</h2>
-          <span>Usuário: frutuozo29</span>
+          <h2>Welcome, Renan Frutuozo</h2>
+          <span>User: frutuozo29</span>
         </div>
         <ul>
-          <li>Movimentos</li>
-          <li>Usuário</li>
-          <li>Configurações</li>
+          <li>Moviments</li>
+          <li>Reports</li>
+          <li>Settings</li>
         </ul>
       </Menu>
       <Content />
