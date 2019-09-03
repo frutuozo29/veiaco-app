@@ -4,7 +4,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 // react-redux
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // actions
 import * as userActions from '../../actions/user'
@@ -20,6 +20,9 @@ export const Main = () => {
 
   const dispatch = useDispatch()
 
+  const name = useSelector(({ user }) => user.user.name)
+  const username = useSelector(({ user }) => user.user.username)
+
   return (
     <Container>
       <Topbar>
@@ -29,8 +32,8 @@ export const Main = () => {
       </Topbar>
       <Menu>
         <div>
-          <h2>{t('common.welcome')}, Renan Frutuozo</h2>
-          <span>{t('main.user')}: frutuozo29</span>
+          <h2>{t('common.welcome')}, {name}</h2>
+          <span>{t('main.user')}: {username}</span>
         </div>
         <ul>
           <li>{t('main.menu.moviments')}</li>

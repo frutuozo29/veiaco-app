@@ -25,6 +25,13 @@ const user = (state = initialState, action) => {
         loading: true,
         error: false
       }
+    case 'LOGIN_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        user: action.user
+      }
     case 'LOGIN_ERROR':
       return {
         ...state,
