@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+// translations
+import './i18n'
+
 // Service Worker
 import * as serviceWorker from './serviceWorker'
 

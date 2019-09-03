@@ -23,10 +23,7 @@ export const App = () => {
   return (
     <Container>
       <GlobalStyle />
-      {token
-        ? <Routes />
-        : <Routes />
-      }
+      <Routes />
     </Container>
   )
 }

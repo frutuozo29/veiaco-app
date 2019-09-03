@@ -1,0 +1,11 @@
+{
+  "user": "User",
+  "topbar": {
+    "logout": "Logout"
+  },
+  "menu": {
+    "moviments": "Moviments",
+    "reports": "Reports",
+    "settings": "Settings"
+  }
+}

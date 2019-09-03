@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
+// i18n
+import { useTranslation } from 'react-i18next'
+
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -17,7 +20,10 @@ import Input from '../shared/Input'
 import Button from '../shared/Button'
 
 export const Login = ({ history }) => {
+  const { t } = useTranslation()
+
   const dispatch = useDispatch()
+
   const token = useSelector(({ user }) => user.token)
 
   const [username, setUsername] = useState('')
@@ -29,19 +35,19 @@ export const Login = ({ history }) => {
     <Container>
       <ContentLogo>
         <div className='logo'>
-          <img src={logo} alt='logo do veiaco' />
-          <h1>Veiaco</h1>
+          <img src={logo} alt={t('common.alt_logo')} />
+          <h1>{t('common.app_name')}</h1>
         </div>
       </ContentLogo>
       <ContentLogin>
         <div className='login'>
           <div>
-            <h2>Welcome</h2>
-            <p>Let's join to the fun, login now</p>
+            <h2>{t('common.welcome')}</h2>
+            <p>{t('login.message_welcome')}</p>
           </div>
           <div>
             <Input
-              label='Username'
+              label={t('login.input.username')}
               name='username'
               width='280px'
               autoComplete='off'
@@ -49,7 +55,7 @@ export const Login = ({ history }) => {
               onChange={({ target: { value } }) => setUsername(value)}
             />
             <Input
-              label='Password'
+              label={t('login.input.password')}
               name='password'
               width='280px'
               type='password'
@@ -60,10 +66,10 @@ export const Login = ({ history }) => {
               width='280px'
               onClick={() => dispatch(userActions.loginUser(username, password))}
             >
-              Login
+              {t('login.button.login')}
             </Button>
           </div>
-          <a href='/'>Forgotten your password?</a>
+          <a href='/'>{t('login.forgotten_password')}</a>
         </div>
       </ContentLogin>
     </Container>

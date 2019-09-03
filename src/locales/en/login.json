@@ -1,0 +1,11 @@
+{
+  "message_welcome": "Let's join to the fun, login now",
+  "forgotten_password": "Forgotten your password?",
+  "input": {
+    "username": "Username",
+    "password": "Password"
+  },
+  "button": {
+    "login": "Login"
+  }
+}

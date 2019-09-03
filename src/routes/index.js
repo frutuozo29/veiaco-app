@@ -8,7 +8,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 // components
 import Login from '../components/Login'
-import Dashboard from '../components/Dashboard'
+import Main from '../components/Main'
 
 const PrivateRoute = ({ component: Component, ...props }) => {
   const token = useSelector(({ user }) => user.token)
@@ -35,8 +35,8 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 const Routes = ({ history }) => (
   <Switch>
     <Route exact path='/login' component={Login} />
-    <PrivateRoute exact path='/' component={Dashboard} />
-    <PrivateRoute exact path='*' component={Dashboard} />
+    <PrivateRoute exact path='/' component={Main} />
+    <PrivateRoute exact path='*' component={Main} />
   </Switch>
 )
 

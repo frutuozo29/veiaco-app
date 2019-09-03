@@ -1,0 +1,11 @@
+{
+  "message_welcome": "Vamos nos divertir, faça login agora",
+  "forgotten_password": "Esqueceu sua senha?",
+  "input": {
+    "username": "Usuário",
+    "password": "Senha"
+  },
+  "button": {
+    "login": "Entrar"
+  }
+}
