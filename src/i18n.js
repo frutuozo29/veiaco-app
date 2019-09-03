@@ -24,7 +24,8 @@ i18n
     },
     detection: {
       order: ['querystring', 'navigator'],
-      lookupQuerystring: 'lng'
+      lookupQuerystring: 'lng',
+      lookupPath: 'lng'
     }
   })
 
