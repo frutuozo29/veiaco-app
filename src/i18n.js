@@ -5,7 +5,6 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import pt from './locales/pt'
 import en from './locales/en'
 
-console.log(en)
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -18,7 +17,7 @@ i18n
         translation: en
       }
     },
-    lng: 'en',
+    lng: 'pt',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
