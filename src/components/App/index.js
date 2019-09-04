@@ -3,6 +3,10 @@ import React, { useEffect } from 'react'
 // i18n
 import i18next from 'i18next'
 
+// react toastify
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -34,6 +38,7 @@ export const App = () => {
     <Container>
       <GlobalStyle />
       <Routes />
+      <ToastContainer autoClose={5000} />
     </Container>
   )
 }

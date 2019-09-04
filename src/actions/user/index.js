@@ -1,8 +1,14 @@
 import { apiBaseUrl } from '../../actions'
 
+// i18n
+import i18n from 'i18next'
+
 // graphql
 import graphqlClient from '../../graphql/graphqlClient'
 import { login } from '../../graphql/mutations/user'
+
+// react toastify
+import { toast } from 'react-toastify'
 
 export const getToken = () => ({ type: 'GET_TOKEN' })
 
@@ -24,6 +30,7 @@ export const loginUser = (username, password) => (dispatch) => {
     })
     .catch(() => {
       dispatch(loginError())
+      toast.error(i18n.t('login.actions.login_error'))
     })
 }
 
