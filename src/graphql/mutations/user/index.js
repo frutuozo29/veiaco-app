@@ -1,4 +1,4 @@
-export const login = (username, password) => (`
+export const mutationLogin = (username, password) => (`
   mutation {
     login(username: "${username}", password: "${password}") {
       user {
@@ -9,4 +9,17 @@ export const login = (username, password) => (`
       token
     }
   }  
+`)
+
+export const mutationCheckToken = (token) => (`
+  mutation {
+    checkToken(token: "${token}") {
+      user {
+        name
+        email
+        username
+      }
+      token
+    }
+  }
 `)

@@ -20,6 +20,7 @@ const user = (state = initialState, action) => {
         token: action.token
       }
     case 'LOGIN_REQUEST':
+    case 'CHECK_TOKEN_REQUEST':
       return {
         ...state,
         loading: true,
@@ -33,10 +34,17 @@ const user = (state = initialState, action) => {
         user: action.user
       }
     case 'LOGIN_ERROR':
+    case 'CHECK_TOKEN_ERROR':
       return {
         ...state,
         loading: false,
         error: true
+      }
+    case 'CHECK_TOKEN_SUCCESS':
+      return {
+        ...state,
+        token: action.token,
+        user: action.user
       }
     case 'LOGOUT':
       window.localStorage.removeItem('veiaco-token')

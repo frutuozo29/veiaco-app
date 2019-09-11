@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.min.css'
 import { useDispatch, useSelector } from 'react-redux'
 
 // actions
-import * as userActions from '../../actions/user'
+import { getToken, checkToken } from '../../actions/user'
 
 // Routes
 import Routes from '../../routes'
@@ -21,10 +21,14 @@ import { GlobalStyle, Container } from './styles'
 
 export const App = () => {
   const dispatch = useDispatch()
-  const token = useSelector(({ user }) => user.token)
+  const [token, user] = useSelector(({ user: { token, user } }) => [token, user])
 
   useEffect(() => {
-    !token && dispatch(userActions.getToken())
+    !token && dispatch(getToken())
+  }, [])
+
+  useEffect(() => {
+    user && Object.keys(user).length === 0 && token && dispatch(checkToken(token))
   }, [token])
 
   useEffect(() => {
