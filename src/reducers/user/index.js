@@ -44,7 +44,9 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         token: action.token,
-        user: action.user
+        user: action.user,
+        loading: false,
+        error: false
       }
     case 'LOGOUT':
       window.localStorage.removeItem('veiaco-token')

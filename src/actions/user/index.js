@@ -47,8 +47,7 @@ export const checkToken = (token) => (dispatch) => {
     .then(({ checkToken: { token, user } }) => {
       dispatch(checkTokenSuccess(token, user))
     })
-    .catch((err) => {
-      console.log(err)
+    .catch(() => {
       dispatch(checkTokenError())
     })
 }

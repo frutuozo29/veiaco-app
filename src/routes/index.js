@@ -17,7 +17,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
     <Route
       {...props}
       render={props =>
-        token ? (
+        token || window.localStorage.getItem('veiaco-token') ? (
           <Component {...props} />
         ) : (
           <Redirect

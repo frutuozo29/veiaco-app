@@ -16,12 +16,15 @@ import { getToken, checkToken } from '../../actions/user'
 // Routes
 import Routes from '../../routes'
 
+// components
+import Loading from '../shared/Loading'
+
 // styles
 import { GlobalStyle, Container } from './styles'
 
 export const App = () => {
   const dispatch = useDispatch()
-  const [token, user] = useSelector(({ user: { token, user } }) => [token, user])
+  const { token, user, loading } = useSelector(({ user }) => user)
 
   useEffect(() => {
     !token && dispatch(getToken())
@@ -40,6 +43,7 @@ export const App = () => {
 
   return (
     <Container>
+      {loading && <Loading />}
       <GlobalStyle />
       <Routes />
       <ToastContainer autoClose={5000} />
