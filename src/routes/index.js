@@ -10,12 +10,11 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from '../components/Login'
 import Main from '../components/Main'
 
-const PrivateRoute = ({ component: Component, ...props }) => {
-  const token = useSelector(({ user }) => user.token)
+const PrivateRoute = ({ component: Component }) => {
+  const { token } = useSelector(({ user }) => user)
 
   return (
     <Route
-      {...props}
       render={props =>
         token || window.localStorage.getItem('veiaco-token') ? (
           <Component {...props} />
@@ -32,7 +31,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
   )
 }
 
-const Routes = ({ history }) => (
+const Routes = () => (
   <Switch>
     <Route exact path='/login' component={Login} />
     <PrivateRoute exact path='/' component={Main} />

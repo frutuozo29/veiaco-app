@@ -15,13 +15,12 @@ import logo from '../../assets/veiacoLogo.svg'
 // styles
 import { Container, Topbar, Menu, Content } from './styles'
 
-export const Main = () => {
+export const Main = ({ history }) => {
   const { t } = useTranslation()
 
   const dispatch = useDispatch()
 
-  const name = useSelector(({ user }) => user.user.name)
-  const username = useSelector(({ user }) => user.user.username)
+  const { name, username } = useSelector(({ user }) => user.user)
 
   return (
     <Container>

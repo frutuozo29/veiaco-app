@@ -49,6 +49,7 @@ export const checkToken = (token) => (dispatch) => {
     })
     .catch(() => {
       dispatch(checkTokenError())
+      dispatch(logout())
     })
 }
 

@@ -26,9 +26,7 @@ export const App = () => {
   const dispatch = useDispatch()
   const { token, user, loading } = useSelector(({ user }) => user)
 
-  useEffect(() => {
-    !token && dispatch(getToken())
-  }, [])
+  useEffect(() => { !token && dispatch(getToken()) }, [])
 
   useEffect(() => {
     user && Object.keys(user).length === 0 && token && dispatch(checkToken(token))
