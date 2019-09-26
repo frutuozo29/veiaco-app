@@ -30,8 +30,8 @@ const spin = keyframes`
 `
 export const Forward = styled.div`
   position: absolute;
-  width: 120px
-  height: 120px
+  width: 120px;
+  height: 120px;
   border-radius: 60px;
   border-style: solid;
   border-width: 1px;
@@ -52,8 +52,8 @@ export const Backward = styled.div`
 
 export const Logo = styled.img`
   position: absolute;
-  width: 72px
-  height: 72px
-  border-radius: 36px
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
   fill: #F2681C;
 `

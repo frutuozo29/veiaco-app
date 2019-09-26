@@ -13,7 +13,7 @@ import * as userActions from '../../actions/user'
 import logo from '../../assets/veiacoLogo.svg'
 
 // styles
-import { Container, Topbar, Menu, Content } from './styles'
+import { Container, Topbar, Menu, Content, MenuStyled, MenuItem, SubMenu, SubMenuItem } from './styles'
 
 export const Main = ({ history }) => {
   const { t } = useTranslation()
@@ -34,11 +34,16 @@ export const Main = ({ history }) => {
           <h2>{t('common.welcome')}, {name}</h2>
           <span>{t('main.user')}: {username}</span>
         </div>
-        <ul>
-          <li>{t('main.menu.moviments')}</li>
-          <li>{t('main.menu.reports')}</li>
-          <li>{t('main.menu.settings')}</li>
-        </ul>
+        <MenuStyled>
+          <MenuItem>
+            {t('main.menu.moviments')}
+            <SubMenu>
+              <SubMenuItem><a href='/'>{t('main.menu.movimentsItems.formPayment')}</a></SubMenuItem>
+            </SubMenu>
+          </MenuItem>
+          <MenuItem>{t('main.menu.reports')}</MenuItem>
+          <MenuItem>{t('main.menu.settings')}</MenuItem>
+        </MenuStyled>
       </Menu>
       <Content />
     </Container>

@@ -47,7 +47,7 @@ export const Menu = styled.div`
   margin: 10px 60px;
   background-color: #FFF;
   border-radius: 4px;
-  overflow: hidden;
+  
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
 
   @media (max-width: 768px) { 
@@ -67,30 +67,6 @@ export const Menu = styled.div`
       font-size: 14px;
     }
   }
-
-  > ul {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    margin-top: 6px;
-
-    > li {
-      display: inline;
-      width: 100%;
-      border-bottom: 4px solid #D1D1D2;
-      font-size: 14px;
-      cursor: pointer;
-      padding: 6px;
-      text-align: center;
-      color: #58585a;
-      font-weight: 700;
-
-      &:hover {
-        border-bottom: 4px solid #F2681C;
-        color: #000;
-      }
-    }
-  }
 `
 
 export const Content = styled.div`
@@ -103,4 +79,62 @@ export const Content = styled.div`
   @media (max-width: 768px) { 
     margin: 0 12px 16px 12px;
   }
+`
+
+export const MenuStyled = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin-top: 6px;
+  width: 100%;
+`
+
+export const MenuItem = styled.li`
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 4px solid #D1D1D2;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  color: #58585a;
+  font-weight: 700;
+  line-height: 45px;
+  height: 45px;
+  transition: all 0.2s linear;
+
+  &:hover {
+    border-bottom: 4px solid #F2681C;
+    color: #000;
+
+    > ul {
+      display: block;
+    }
+  }
+`
+
+export const SubMenu = styled.ul`
+  display: none;
+  border-radius: 0 0 5px 5px;
+  background-color: #FFF;
+  list-style: none;
+  overflow: hidden;
+`
+
+export const SubMenuItem = styled.li`
+
+  > a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #58585a;
+  }
+  
+  &:hover {
+    background-color: #F2681C;
+    
+    > a {
+      color: #000;
+    }
+  }
+
 `

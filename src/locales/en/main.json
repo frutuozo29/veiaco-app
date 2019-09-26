@@ -5,6 +5,9 @@
   },
   "menu": {
     "moviments": "Moviments",
+    "movimentsItems": {
+      "formPayment": "Form Payment"
+    },
     "reports": "Reports",
     "settings": "Settings"
   }

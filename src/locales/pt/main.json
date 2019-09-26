@@ -5,6 +5,9 @@
   },
   "menu": {
     "moviments": "Movimentos",
+    "movimentsItems": {
+      "formPayment": "Forma de Pagamento"
+    },
     "reports": "Relatórios",
     "settings": "Definições"
   }
