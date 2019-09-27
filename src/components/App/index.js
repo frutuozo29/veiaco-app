@@ -13,14 +13,12 @@ import { useDispatch, useSelector } from 'react-redux'
 // actions
 import { getToken, checkToken } from '../../actions/user'
 
-// Routes
-import Routes from '../../routes'
-
 // components
 import Loading from '../shared/Loading'
 
 // styles
 import { GlobalStyle, Container } from './styles'
+import Main from '../Main'
 
 export const App = () => {
   const dispatch = useDispatch()
@@ -43,7 +41,7 @@ export const App = () => {
     <Container>
       {loading && <Loading />}
       <GlobalStyle />
-      <Routes />
+      <Main />
       <ToastContainer autoClose={5000} />
     </Container>
   )

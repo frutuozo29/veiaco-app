@@ -72,9 +72,11 @@ export const Menu = styled.div`
 export const Content = styled.div`
   background-color: #FFF;
   margin: 0 60px 20px 60px;
+  padding: 20px;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+  height: 100vh;
 
   @media (max-width: 768px) { 
     margin: 0 12px 16px 12px;
@@ -122,19 +124,16 @@ export const SubMenu = styled.ul`
 `
 
 export const SubMenuItem = styled.li`
+  background-color: #f47e3e;
 
   > a {
     font-size: 14px;
     text-decoration: none;
-    color: #58585a;
+    color: #000;
   }
   
   &:hover {
     background-color: #F2681C;
-    
-    > a {
-      color: #000;
-    }
   }
 
 `

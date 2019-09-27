@@ -8,7 +8,8 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 // components
 import Login from '../components/Login'
-import Main from '../components/Main'
+import FormPayment from '../components/FormPayment'
+import Dashboard from '../components/Dashboard'
 
 const PrivateRoute = ({ component: Component }) => {
   const { token } = useSelector(({ user }) => user)
@@ -34,8 +35,9 @@ const PrivateRoute = ({ component: Component }) => {
 const Routes = () => (
   <Switch>
     <Route exact path='/login' component={Login} />
-    <PrivateRoute exact path='/' component={Main} />
-    <PrivateRoute exact path='*' component={Main} />
+    <PrivateRoute exact path='/' component={Dashboard} />
+    <PrivateRoute exact path='/formPayment' component={FormPayment} />
+    <PrivateRoute exact path='*' component={Dashboard} />
   </Switch>
 )
 
