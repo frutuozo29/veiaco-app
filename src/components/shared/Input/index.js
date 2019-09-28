@@ -6,7 +6,7 @@ export const Input = ({ label, ...props }) => {
   return (
     <ContentInput>
       <Label>{label}</Label>
-      <InputStyled {...props} />
+      <InputStyled aria-label={label} {...props} />
     </ContentInput>
   )
 }
