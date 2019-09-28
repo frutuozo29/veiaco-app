@@ -1,5 +1,7 @@
 # Veiaco App
 
+[![CircleCI](https://circleci.com/gh/frutuozo29/veiaco-app.svg?style=svg)](https://circleci.com/gh/frutuozo29/veiaco-app)  [![Netlify Status](https://api.netlify.com/api/v1/badges/22991803-ea0d-47fa-a02d-221b42ecdfb4/deploy-status)](https://app.netlify.com/sites/veiaco-app/deploys)
+
 ## Descrição
 Um projeto divertido que vai controlar suas receitas e despesas 
 
