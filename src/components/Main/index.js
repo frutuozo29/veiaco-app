@@ -60,7 +60,6 @@ export const Main = ({ history }) => {
       </Container>
     )
   } else {
-    console.log(token)
     return <Routes />
   }
 }

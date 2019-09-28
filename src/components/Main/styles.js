@@ -44,7 +44,7 @@ export const Topbar = styled.div`
 export const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 60px;
+  margin: 0 60px;
   background-color: #FFF;
   border-radius: 4px;
   
@@ -76,7 +76,7 @@ export const Content = styled.div`
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
-  height: 100vh;
+  height: min-content;
 
   @media (max-width: 768px) { 
     margin: 0 12px 16px 12px;
@@ -127,9 +127,11 @@ export const SubMenuItem = styled.li`
   background-color: #f47e3e;
 
   > a {
+    display: block;
     font-size: 14px;
     text-decoration: none;
     color: #000;
+    width: 100%;
   }
   
   &:hover {
