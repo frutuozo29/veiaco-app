@@ -2,6 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+// apollo client
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+
 // translations
 import './i18n'
 
@@ -11,10 +15,31 @@ import * as serviceWorker from './serviceWorker'
 // Components
 import App from './components/App'
 
+const client = new ApolloClient({
+  uri: process.env.NODE_ENV !== 'production' ? 'http://localhost:8010' : process.env.SERVER_URL,
+  cache: new InMemoryCache(),
+  request: (operation) => {
+    const token = localStorage.getItem('veiaco-token');
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  }
+})
+
+client.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem('veiaco-token')
+  },
+})
+
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <ApolloProvider client={client}>
+    <Router>
+      <App />
+    </Router>
+  </ApolloProvider>,
   document.getElementById('root')
 )
 

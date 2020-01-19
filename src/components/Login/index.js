@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+// apollo client
+import { useApolloClient, useMutation } from '@apollo/react-hooks'
+
 // i18n
 import { useTranslation } from 'react-i18next'
 
@@ -13,10 +16,36 @@ import { Container, ContentLogo, ContentLogin } from './styles'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 
+// graphql mutations
+import { LOGIN } from '../../graphql/mutations/user'
+
 export const Login = () => {
   const { t } = useTranslation()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const client = useApolloClient()
+
+  const [login] = useMutation(
+    LOGIN,
+    {
+      onCompleted: (data) => {
+        data && data.login && data.login.token && (() => {
+          client.writeData({ data: { isLoggedIn: true } })
+          localStorage.setItem('veiaco-token', data.login.token)
+        })()
+      }
+    }
+  )
+
+  const handleLogin = () => {
+    login({
+      variables: {
+        username,
+        password
+      }
+    })
+  }
 
   return (
     <Container data-testid='login'>
@@ -51,7 +80,7 @@ export const Login = () => {
             />
             <Button
               width='280px'
-              onClick={() => { }}
+              onClick={handleLogin}
             >
               {t('login.button.login')}
             </Button>
