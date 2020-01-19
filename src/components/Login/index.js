@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // i18n
 import { useTranslation } from 'react-i18next'
-
-// redux
-import { useDispatch, useSelector } from 'react-redux'
-
-// actions
-import * as userActions from '../../actions/user'
 
 // logo
 import logo from '../../assets/veiacoLogo.svg'
@@ -19,17 +13,10 @@ import { Container, ContentLogo, ContentLogin } from './styles'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 
-export const Login = ({ history }) => {
+export const Login = () => {
   const { t } = useTranslation()
-
-  const dispatch = useDispatch()
-
-  const token = useSelector(({ user }) => user.token)
-
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
-  useEffect(() => { token && history.push('/') }, [token])
 
   return (
     <Container data-testid='login'>
@@ -64,7 +51,7 @@ export const Login = ({ history }) => {
             />
             <Button
               width='280px'
-              onClick={() => dispatch(userActions.loginUser(username, password))}
+              onClick={() => { }}
             >
               {t('login.button.login')}
             </Button>

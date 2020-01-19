@@ -1,8 +1,5 @@
 import React from 'react'
 
-// redux
-import { useSelector } from 'react-redux'
-
 // react-router-dom
 import { Switch, Route, Redirect } from 'react-router-dom'
 
@@ -11,12 +8,10 @@ import Login from '../components/Login'
 import Dashboard from '../components/Dashboard'
 
 const PrivateRoute = ({ component: Component }) => {
-  const { token } = useSelector(({ user }) => user)
-
   return (
     <Route
       render={props =>
-        token || window.localStorage.getItem('veiaco-token') ? (
+        window.localStorage.getItem('veiaco-token') ? (
           <Component {...props} />
         ) : (
             <Redirect
