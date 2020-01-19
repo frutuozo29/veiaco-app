@@ -5,7 +5,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   width: 100%;
   height: 100%;
-  background-color: #001F24;
+  background-color: #FFF;
 
   @media (max-width: 768px) { 
     grid-template-columns: none;
@@ -25,7 +25,7 @@ export const ContentLogo = styled.div`
     align-self: center;
     width: 100%;
     height: 480px;
-    border-right: 2px solid gray;
+    border-right: 2px solid #8798AD;
     padding: 20px 80px;
 
     @media (max-width: 768px) { 
@@ -37,12 +37,13 @@ export const ContentLogo = styled.div`
     > img {
       width: 60px;
       height: 60px;
-      fill: #F2681C;
+      fill: #8798AD;
       margin-right: 10px;
     }
 
     > h1 {
       font-size: 32px;
+      color: #2E5BFF;
     }
   }
 `
@@ -75,7 +76,12 @@ export const ContentLogin = styled.div`
         align-self: center;
         font-size: 26px;
         margin-bottom: 30px;
-      }  
+        color: #8798AD;
+      }
+
+      > p {
+        color: #8798AD;
+      }
     }
 
 
@@ -89,7 +95,7 @@ export const ContentLogin = styled.div`
 
     > a {
       text-decoration: none;
-      color: #FFF;
+      color: #8798AD;
     }
   }
 `

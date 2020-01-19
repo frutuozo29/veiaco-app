@@ -6,7 +6,7 @@ export const Container = styled.div`
   grid-gap: 20px;
   width: 100%;
   height: 100%;
-  background-color: #EBEBEC;
+  background-color: #F4F6FC;
 `
 
 export const Topbar = styled.div`
@@ -14,7 +14,7 @@ export const Topbar = styled.div`
   align-items: center;
   width: 100%;
   height: 100px;
-  background-color: #001F24;
+  background-color: #F4F6FC;
   color: #FFF;
   padding: 0px 60px;
 

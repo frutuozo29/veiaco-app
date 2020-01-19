@@ -32,7 +32,7 @@ export const Login = ({ history }) => {
   useEffect(() => { token && history.push('/') }, [token])
 
   return (
-    <Container>
+    <Container data-testid='login'>
       <ContentLogo>
         <div className='logo'>
           <img src={logo} alt={t('common.alt_logo')} />

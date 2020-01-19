@@ -8,7 +8,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 // components
 import Login from '../components/Login'
-import FormPayment from '../components/FormPayment'
 import Dashboard from '../components/Dashboard'
 
 const PrivateRoute = ({ component: Component }) => {
@@ -20,13 +19,13 @@ const PrivateRoute = ({ component: Component }) => {
         token || window.localStorage.getItem('veiaco-token') ? (
           <Component {...props} />
         ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: props.location }
-            }}
-          />
-        )
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: props.location }
+              }}
+            />
+          )
       }
     />
   )
@@ -36,7 +35,6 @@ const Routes = () => (
   <Switch>
     <Route exact path='/login' component={Login} />
     <PrivateRoute exact path='/' component={Dashboard} />
-    <PrivateRoute exact path='/formPayment' component={FormPayment} />
     <PrivateRoute exact path='*' component={Dashboard} />
   </Switch>
 )

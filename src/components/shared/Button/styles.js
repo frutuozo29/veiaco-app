@@ -9,7 +9,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   width: ${({ width }) => width || '48px'};
   height: ${({ height }) => height || '36px'};
-  background-color: ${({ backgroundColor }) => backgroundColor || '#F2681C'};
+  background-color: ${({ backgroundColor }) => backgroundColor || '#2E5BFF'};
 
   &:hover {
     box-shadow: 0 0 3px 0 #FFF;

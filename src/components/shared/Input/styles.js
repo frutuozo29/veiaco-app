@@ -6,17 +6,19 @@ export const ContentInput = styled.div`
   margin: 6px 0;
 `
 
-export const Label = styled.label``
+export const Label = styled.label`
+  color: #8798AD;
+`
 
 export const InputStyled = styled.input`
   padding: 6px 12px;
   overflow: hidden;
-  border: none;
+  border: 1px solid #8798AD;
   border-radius: 4px;
   width: ${props => props.width || '220px'};
   height: ${props => props.height || '36px'};
   
   &:focus {
-    outline-color: #F2681C;
+    outline-color: #2E5BFF;
   }
 `

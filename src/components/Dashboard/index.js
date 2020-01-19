@@ -3,9 +3,9 @@ import React from 'react'
 // Styles
 import { Container, Title } from './styles'
 
-export const Dashboard = ({ history }) => {
+export const Dashboard = () => {
   return (
-    <Container>
+    <Container data-testid='dashboard'>
       <Title>Dashboard</Title>
     </Container>
   )

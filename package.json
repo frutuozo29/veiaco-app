@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client": "^2.6.8",
+    "graphql-tag": "^2.10.1",
     "i18next": "^17.0.13",
     "i18next-browser-languagedetector": "^3.0.3",
     "react": "^16.8.5",
+    "react-apollo": "^3.1.3",
     "react-dom": "^16.8.5",
     "react-i18next": "^10.12.2",
     "react-redux": "^7.0.1",
@@ -21,8 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint:css": "stylelint ./src/**/*styles.js",
-    "coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject"
+    "coverage": "react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,10 +36,37 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^9.4.0",
+    "handlebars": "^4.5.0",
     "redux-devtools-extension": "^2.13.8",
     "stylelint": "^11.0.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.8.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/styles.js",
+      "!src/index.js",
+      "!src/i18n.js",
+      "!src/serviceWorker.js",
+      "!**/locales/**",
+      "!**/graphql/**",
+      "!src/setupTests.js",
+      "!src/actions/index.js",
+      "!src/reducers/index.js",
+      "!src/routes/index.js",
+      "!node_modules/"
+    ]
   }
 }
