@@ -2,31 +2,44 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+// apollo client
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+
 // translations
 import './i18n'
 
 // Service Worker
 import * as serviceWorker from './serviceWorker'
 
-// Redux
-import { createStore, applyMiddleware, compose } from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import reducers from './reducers'
-
 // Components
 import App from './components/App'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const enhancer = composeEnhancers(applyMiddleware(thunk))
-const store = createStore(reducers, enhancer)
+const client = new ApolloClient({
+  uri: process.env.NODE_ENV !== 'production' ? 'http://localhost:8010' : process.env.SERVER_URL,
+  cache: new InMemoryCache(),
+  request: (operation) => {
+    const token = localStorage.getItem('veiaco-token');
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  }
+})
+
+client.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem('veiaco-token')
+  },
+})
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ApolloProvider client={client}>
     <Router>
       <App />
     </Router>
-  </Provider>,
+  </ApolloProvider>,
   document.getElementById('root')
 )
 

@@ -1,26 +1,23 @@
 import React from 'react'
 
-// react-redux
-import { useSelector } from 'react-redux'
+// apollo client
+import { useQuery } from '@apollo/react-hooks'
+
+// queries
+import { IS_LOGGED_IN } from '../../graphql/queries'
 
 // Routes
 import Routes from '../../routes'
 
-// styles
-import { Container } from './styles'
+// components
+import Login from '../Login'
 
-export const Main = ({ history }) => {
-  const { token } = useSelector(({ user }) => user)
+export const Main = () => {
+  const { data } = useQuery(IS_LOGGED_IN)
 
-  if (token) {
-    return (
-      <Container>
-        <Routes />
-      </Container>
-    )
-  } else {
-    return <Routes />
-  }
+  return data && data.isLoggedIn ?
+    <Routes /> :
+    <Login />
 }
 
 export default Main

@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+
+// apollo client
+import { useApolloClient, useMutation } from '@apollo/react-hooks'
 
 // i18n
 import { useTranslation } from 'react-i18next'
-
-// redux
-import { useDispatch, useSelector } from 'react-redux'
-
-// actions
-import * as userActions from '../../actions/user'
 
 // logo
 import logo from '../../assets/veiacoLogo.svg'
@@ -19,17 +16,36 @@ import { Container, ContentLogo, ContentLogin } from './styles'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 
-export const Login = ({ history }) => {
+// graphql mutations
+import { LOGIN } from '../../graphql/mutations/user'
+
+export const Login = () => {
   const { t } = useTranslation()
-
-  const dispatch = useDispatch()
-
-  const token = useSelector(({ user }) => user.token)
-
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(() => { token && history.push('/') }, [token])
+  const client = useApolloClient()
+
+  const [login] = useMutation(
+    LOGIN,
+    {
+      onCompleted: (data) => {
+        data && data.login && data.login.token && (() => {
+          client.writeData({ data: { isLoggedIn: true } })
+          localStorage.setItem('veiaco-token', data.login.token)
+        })()
+      }
+    }
+  )
+
+  const handleLogin = () => {
+    login({
+      variables: {
+        username,
+        password
+      }
+    })
+  }
 
   return (
     <Container data-testid='login'>
@@ -64,7 +80,7 @@ export const Login = ({ history }) => {
             />
             <Button
               width='280px'
-              onClick={() => dispatch(userActions.loginUser(username, password))}
+              onClick={handleLogin}
             >
               {t('login.button.login')}
             </Button>

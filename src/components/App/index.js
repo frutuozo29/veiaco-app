@@ -7,28 +7,11 @@ import i18next from 'i18next'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 
-// redux
-import { useDispatch, useSelector } from 'react-redux'
-
-// actions
-import { getToken, checkToken } from '../../actions/user'
-
-// components
-import Loading from '../shared/Loading'
-
 // styles
 import { GlobalStyle, Container } from './styles'
 import Main from '../Main'
 
 export const App = () => {
-  const dispatch = useDispatch()
-  const { token, user, loading } = useSelector(({ user }) => user)
-
-  useEffect(() => { !token && dispatch(getToken()) }, [])
-
-  useEffect(() => {
-    user && Object.keys(user).length === 0 && token && dispatch(checkToken(token))
-  }, [token])
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -39,7 +22,6 @@ export const App = () => {
 
   return (
     <Container>
-      {loading && <Loading />}
       <GlobalStyle />
       <Main />
       <ToastContainer autoClose={5000} />

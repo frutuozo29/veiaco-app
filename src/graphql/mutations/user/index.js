@@ -1,6 +1,8 @@
-export const mutationLogin = (username, password) => (`
-  mutation {
-    login(username: "${username}", password: "${password}") {
+import { gql } from 'apollo-boost'
+
+export const LOGIN = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       user {
         name
         email
@@ -9,11 +11,11 @@ export const mutationLogin = (username, password) => (`
       token
     }
   }  
-`)
+`
 
-export const mutationCheckToken = (token) => (`
-  mutation {
-    checkToken(token: "${token}") {
+export const CHECK_TOKEN = gql`
+  mutation checkToken($token: String!){
+    checkToken(token: $token) {
       user {
         name
         email
@@ -22,4 +24,4 @@ export const mutationCheckToken = (token) => (`
       token
     }
   }
-`)
+`
