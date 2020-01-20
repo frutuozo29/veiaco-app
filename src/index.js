@@ -16,7 +16,7 @@ import * as serviceWorker from './serviceWorker'
 import App from './components/App'
 
 const client = new ApolloClient({
-  uri: process.env.NODE_ENV !== 'production' ? 'http://localhost:8010' : process.env.SERVER_URL,
+  uri: process.env.NODE_ENV !== 'production' ? 'http://localhost:8010' : 'https://veiaco-api.herokuapp.com',
   cache: new InMemoryCache(),
   request: (operation) => {
     const token = localStorage.getItem('veiaco-token');
