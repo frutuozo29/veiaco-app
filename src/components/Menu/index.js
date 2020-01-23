@@ -8,7 +8,12 @@ export default ({ gridArea }) => {
 
   return (
     <MenuStyled gridArea={gridArea} open={opened}>
-      <span>MenuStyled</span>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
       <button
         onClick={() => setOpened(!opened)}
       >
