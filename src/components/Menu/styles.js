@@ -25,7 +25,7 @@ export const MenuStyled = styled.section`
   
   max-width: 280px;
   width: ${({ open }) => open ? '280' : '60'}px;
-  animation: ${({ open }) => open ? openKey : closeKey} 1s linear;
+  animation: ${({ open }) => open ? openKey : closeKey} 0.4s linear;
 
   ${({ gridArea }) => gridArea && `grid-area: ${gridArea}`}
 `
