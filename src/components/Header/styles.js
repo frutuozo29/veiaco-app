@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const HeaderStyled = styled.section`
-  height: 52px;
+  height: 60px;
   width: 100%;
-  background-color: red;
+  background-color: #FFF;
+  box-shadow: 0px 1px 10px 1px #8C8C8C;
 
   ${({ gridArea }) => gridArea && `grid-area: ${gridArea}`}
 `
