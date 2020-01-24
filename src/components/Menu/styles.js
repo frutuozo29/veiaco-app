@@ -1,31 +1,13 @@
-import styled, { keyframes } from 'styled-components'
-
-const closeKey = keyframes`
-  from {
-    width: 280px;
-  }
-  to {
-    width: 60px;
-  }
-`
-
-const openKey = keyframes`
-  from {
-    width: 60px;
-  }
-  to {
-    width: 280px;
-  }
-`
+import styled from 'styled-components'
 
 export const MenuStyled = styled.section`
   display: grid;
-  grid-template-rows: 52px 1fr;
+  grid-template-rows: 60px 1fr;
   background-color: #FFF;
   
   max-width: 280px;
   width: ${({ open }) => open ? '280' : '60'}px;
-  animation: ${({ open }) => open ? openKey : closeKey} 0.4s linear;
+  transition: width 0.35s;
 
   ${({ gridArea }) => gridArea && `grid-area: ${gridArea}`}
 `
@@ -52,7 +34,7 @@ export const MenuButton = styled.div`
 export const MenuContent = styled.div`
   height: 100%;
   width: 100%;
-  box-shadow: 0px 10px 8px 0px #8C8C8C;
+  box-shadow: 0px 5px 5px 0px #8C8C8C;
 `
 
 
