@@ -1,11 +1,19 @@
 import React from 'react'
 
 // styles
-import { HeaderStyled } from './styles'
+import { HeaderStyled, MenuButton } from './styles'
 
-export default ({ gridArea }) => {
+export default ({ gridArea, onClickMenuButton }) => {
 
   return (
-    <HeaderStyled gridArea={gridArea} />
+    <HeaderStyled gridArea={gridArea}>
+      <MenuButton
+        onClick={onClickMenuButton}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </MenuButton>
+    </HeaderStyled>
   )
 }

@@ -35,15 +35,15 @@ export const ContentLogo = styled.div`
     }
 
     > img {
-      width: 60px;
-      height: 60px;
+      width: 52px;
+      height: 52px;
       fill: #8798AD;
       margin-right: 10px;
     }
 
     > h1 {
       font-size: 32px;
-      color: #2E5BFF;
+      color: #8798AD;
     }
   }
 `

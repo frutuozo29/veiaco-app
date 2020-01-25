@@ -1,21 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 // styles
-import { MenuStyled, MenuButton, MenuContent } from './styles'
+import { MenuStyled, MenuAvatar, MenuList } from './styles'
 
-export default ({ gridArea }) => {
-  const [opened, setOpened] = useState(true)
-
-  return (
-    <MenuStyled gridArea={gridArea} open={opened}>
-      <MenuButton
-        onClick={() => setOpened(!opened)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </MenuButton>
-      <MenuContent />
-    </MenuStyled>
-  )
-}
+export default ({ open, gridArea }) => (
+  <MenuStyled gridArea={gridArea} open={open}>
+    <MenuAvatar />
+  </MenuStyled>
+)
