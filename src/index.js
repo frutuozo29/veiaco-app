@@ -30,7 +30,8 @@ const client = new ApolloClient({
 
 client.writeData({
   data: {
-    isLoggedIn: !!localStorage.getItem('veiaco-token')
+    isLoggedIn: !!localStorage.getItem('veiaco-token'),
+    isMenuOpen: true
   },
 })
 

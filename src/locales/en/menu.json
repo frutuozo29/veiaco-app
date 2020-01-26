@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome",
+  "menus": {
+    "categories": "Categories",
+    "transfers": "Transfers",
+    "accounts": "Accounts",
+    "releases": "Releases"
+  }
+}

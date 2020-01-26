@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // apollo client
 import { useQuery } from '@apollo/react-hooks'
@@ -19,12 +19,21 @@ import Content from '../Content'
 import { Container } from './styles'
 
 export const Main = () => {
+  const [open, setOpen] = useState(true)
+
   const { data } = useQuery(IS_LOGGED_IN)
 
   return data && data.isLoggedIn ?
     <Container>
-      <Header gridArea='header' />
-      <Menu gridArea='menu' />
+      <Header
+        open={open}
+        gridArea='header'
+        onClickMenuButton={() => setOpen(!open)}
+      />
+      <Menu
+        open={open}
+        gridArea='menu'
+      />
       <Content gridArea='content'>
         <Routes />
       </Content>
