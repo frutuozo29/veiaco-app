@@ -1,3 +1,9 @@
 {
-  "welcome": "Bem vindo"
+  "welcome": "Bem vindo",
+  "menus": {
+    "categories": "Categorias",
+    "transfers": "Transferências",
+    "accounts": "Contas",
+    "releases": "Lançamentos"
+  }
 }

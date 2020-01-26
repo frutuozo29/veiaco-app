@@ -1,5 +1,6 @@
 {
   "app_name": "Veiaco",
+  "app_name_minuscle": "veiaco",
   "welcome": "Bem vindo",
   "alt_logo": "Logo do Veiaco"
 }

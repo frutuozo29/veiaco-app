@@ -5,3 +5,9 @@ export const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `
+
+export const IS_MENU_OPEN = gql`
+  query IsMenuOpen {
+    isMenuOpen @client
+  }
+`

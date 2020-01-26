@@ -8,9 +8,10 @@ import { MenuStyled, MenuAvatar, MenuList, MenuItem } from './styles'
 
 // icones
 import { ReactComponent as Avatar } from '../../assets/icons/avatar.svg'
-import { ReactComponent as CreditCard } from '../../assets/icons/creditCard.svg'
-import { ReactComponent as Expenses } from '../../assets/icons/expenses.svg'
-import { ReactComponent as Revenues } from '../../assets/icons/revenues.svg'
+import { ReactComponent as Transfers } from '../../assets/icons/transfers.svg'
+import { ReactComponent as Accounts } from '../../assets/icons/accounts.svg'
+import { ReactComponent as Releases } from '../../assets/icons/releases.svg'
+import { ReactComponent as Categories } from '../../assets/icons/categories.svg'
 
 export default ({ open, gridArea }) => {
   const { t } = useTranslation()
@@ -26,16 +27,20 @@ export default ({ open, gridArea }) => {
       </MenuAvatar>
       <MenuList>
         <MenuItem menuOpened={open}>
-          <Revenues />
-          <span>Revenues</span>
-        </MenuItem>
-        <MenuItem active menuOpened={open}>
-          <CreditCard />
-          <span>Form Paiment</span>
+          <Categories />
+          <span>{t('menu.menus.categories')}</span>
         </MenuItem>
         <MenuItem menuOpened={open}>
-          <Expenses />
-          <span>Expenses</span>
+          <Transfers />
+          <span>{t('menu.menus.transfers')}</span>
+        </MenuItem>
+        <MenuItem active menuOpened={open}>
+          <Accounts />
+          <span>{t('menu.menus.accounts')}</span>
+        </MenuItem>
+        <MenuItem menuOpened={open}>
+          <Releases />
+          <span>{t('menu.menus.releases')}</span>
         </MenuItem>
       </MenuList>
     </MenuStyled >

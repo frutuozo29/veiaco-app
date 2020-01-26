@@ -17,6 +17,7 @@ export const InputStyled = styled.input`
   border-radius: 4px;
   width: ${props => props.width || '220px'};
   height: ${props => props.height || '36px'};
+  font-size: 14px;
   
   &:focus {
     outline-color: #2E5BFF;

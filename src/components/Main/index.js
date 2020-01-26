@@ -26,6 +26,7 @@ export const Main = () => {
   return data && data.isLoggedIn ?
     <Container>
       <Header
+        open={open}
         gridArea='header'
         onClickMenuButton={() => setOpen(!open)}
       />
