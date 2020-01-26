@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+// routes
+import { Link } from 'react-router-dom'
+
 export const MenuStyled = styled.section`
   display: grid;
   grid-template-columns: ${({ open }) => open ? '248px' : '72px'};
@@ -66,13 +69,14 @@ export const MenuList = styled.div`
   height: 100%;
 `
 
-export const MenuItem = styled.div`
+export const MenuItem = styled(Link)`
   display: grid;
   height: 100%;
   padding: 8px 18px;
   align-items: center;
   cursor: pointer;
   transition: opacity 0.5s ease-in 0.5s;
+  text-decoration: none;
 
   &:hover {
     background-color: #F4F6FC;

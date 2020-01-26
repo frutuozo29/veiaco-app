@@ -2,15 +2,22 @@ import styled from 'styled-components'
 
 export const HeaderStyled = styled.section`
   display: grid;
-  grid-template-columns: ${({ menuOpened }) => menuOpened ? '248px 1fr' : '60px 1fr'};
+  grid-template-columns: ${({ menuOpened }) => menuOpened ? 'auto 1fr' : 'auto 1fr'};
   height: 60px;
   width: 100%;
   background-color: #FFF;
   border-bottom: 1px solid #c3c9ef;
   box-shadow: 0px 0px 5px 1px #8C8C8C;
-  transition: width 0.35s;
+  
 
   ${({ gridArea }) => gridArea && `grid-area: ${gridArea}`}
+
+  .content-button {
+    display: grid;
+    align-items: center;
+    width: ${({ menuOpened }) => menuOpened ? '248px' : '72px'};
+    transition: width 0.35s;
+  }
 `
 
 export const HeaderButton = styled.div`
