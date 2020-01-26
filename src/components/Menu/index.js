@@ -32,7 +32,7 @@ export default ({ open, gridArea }) => {
           active={menuActived === 1}
           menuOpened={open}
           onClick={() => setMenuActived(1)}
-          to='/Categories'
+          to='/Category'
         >
           <Categories />
           <span>{t('menu.menus.categories')}</span>

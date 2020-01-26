@@ -7,7 +7,7 @@ export const MenuStyled = styled.section`
   display: grid;
   grid-template-columns: ${({ open }) => open ? '248px' : '72px'};
   grid-template-rows: auto 1fr;
-  grid-gap: 16px;
+  grid-gap: 48px;
   background-color: #FFF;
   max-width: 248px;
   width: ${({ open }) => open ? '248px' : '72px'};
