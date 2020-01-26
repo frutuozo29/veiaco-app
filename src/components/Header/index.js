@@ -18,13 +18,15 @@ export default ({ open, gridArea, onClickMenuButton }) => {
 
   return (
     <HeaderStyled gridArea={gridArea} menuOpened={open}>
-      <HeaderButton
-        onClick={onClickMenuButton}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </HeaderButton>
+      <div className='content-button'>
+        <HeaderButton
+          onClick={onClickMenuButton}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </HeaderButton>
+      </div>
       <HeaderContent>
         <div className='content'>
           <Logo>

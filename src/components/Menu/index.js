@@ -12,9 +12,11 @@ import { ReactComponent as Transfers } from '../../assets/icons/transfers.svg'
 import { ReactComponent as Accounts } from '../../assets/icons/accounts.svg'
 import { ReactComponent as Releases } from '../../assets/icons/releases.svg'
 import { ReactComponent as Categories } from '../../assets/icons/categories.svg'
+import { useState } from 'react'
 
 export default ({ open, gridArea }) => {
   const { t } = useTranslation()
+  const [menuActived, setMenuActived] = useState()
 
   return (
     < MenuStyled gridArea={gridArea} open={open} >
@@ -26,19 +28,39 @@ export default ({ open, gridArea }) => {
         </div>
       </MenuAvatar>
       <MenuList>
-        <MenuItem menuOpened={open}>
+        <MenuItem
+          active={menuActived === 1}
+          menuOpened={open}
+          onClick={() => setMenuActived(1)}
+          to='/Categories'
+        >
           <Categories />
           <span>{t('menu.menus.categories')}</span>
         </MenuItem>
-        <MenuItem menuOpened={open}>
+        <MenuItem
+          active={menuActived === 2}
+          menuOpened={open}
+          onClick={() => setMenuActived(2)}
+          to='/'
+        >
           <Transfers />
           <span>{t('menu.menus.transfers')}</span>
         </MenuItem>
-        <MenuItem active menuOpened={open}>
+        <MenuItem
+          active={menuActived === 3}
+          menuOpened={open}
+          onClick={() => setMenuActived(3)}
+          to='/'
+        >
           <Accounts />
           <span>{t('menu.menus.accounts')}</span>
         </MenuItem>
-        <MenuItem menuOpened={open}>
+        <MenuItem
+          active={menuActived === 4}
+          menuOpened={open}
+          onClick={() => setMenuActived(4)}
+          to='/'
+        >
           <Releases />
           <span>{t('menu.menus.releases')}</span>
         </MenuItem>
