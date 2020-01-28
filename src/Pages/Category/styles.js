@@ -28,7 +28,7 @@ export const TableHeader = styled.div`
 export const CardList = styled.div`
   display: grid;
   grid-auto-rows: min-content;
-  grid-gap: 8px;
+  height: min-content;
 `
 
 export const Card = styled.div`
@@ -36,11 +36,13 @@ export const Card = styled.div`
   grid-template-columns: 1fr 1fr 80px;
   width: 100%;
   height: 42px;
-  background-color: #FFF;
-  border-radius: 6px;
+  border-bottom: 1px solid #8798AD;
   align-items: center;
   padding: 0 6px;
-  box-shadow: 0px 0px 5px 0px #8798AD;
+
+  &:hover {
+    background-color: #FFF;
+  }
 
   
   > span {

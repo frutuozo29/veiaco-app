@@ -1,13 +1,18 @@
 import React from 'react'
 
 // styles
-import { Content, PageTitle } from './styles'
+import { Content, PageTitle, Button } from './styles'
 
-export default ({ title }) => {
+export default ({ title, to }) => {
 
   return (
     <Content>
       <PageTitle>{title}</PageTitle>
+      {!!to &&
+        <Button to={to}>
+          New
+        </Button>
+      }
     </Content>
   )
 }

@@ -1,0 +1,10 @@
+{
+  "title": "Categories",
+  "table": {
+    "description": "DESCRIPTION",
+    "totalSub": "TOTAL SUB-CATEGORIES"
+  },
+  "form": {
+    "title_create": "Categories - Including"
+  }
+}

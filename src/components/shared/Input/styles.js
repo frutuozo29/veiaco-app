@@ -8,6 +8,7 @@ export const ContentInput = styled.div`
 
 export const Label = styled.label`
   color: #8798AD;
+  font-size: 14px;
 `
 
 export const InputStyled = styled.input`

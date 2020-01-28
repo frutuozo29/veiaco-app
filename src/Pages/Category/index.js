@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+// apollo client
+import { useQuery } from '@apollo/react-hooks'
+
+// query
+import { GET_ALL_CATEGORIES } from '../../graphql/queries/category'
 
 // components
 import PageHeader from '../../components/shared/PageHeader'
+import Loading from '../../components/shared/Loading'
+
+// toastify
+import { toast } from 'react-toastify'
 
 // styles
 import { Content, Table, TableHeader, CardList, Card } from './styles'
@@ -10,60 +20,48 @@ import { Content, Table, TableHeader, CardList, Card } from './styles'
 import { ReactComponent as Edit } from '../../assets/icons/edit.svg'
 import { ReactComponent as Delete } from '../../assets/icons/delete.svg'
 
+// react-i18n
+import { useTranslation } from 'react-i18next'
+
 export default () => {
+  const { t } = useTranslation()
+
+  const { loading, error, data: { categories = [] } = {} } = useQuery(GET_ALL_CATEGORIES)
+
+  useEffect(() => {
+    if (error) {
+      toast.error('Erro ao carregar os dados')
+    }
+  }, [error])
 
   return (
     <Content>
       <PageHeader
-        title='Categories'
+        title={t('category.title')}
+        to='/Category/Form'
       />
       <Table>
         <TableHeader>
-          <span>DESCRIPTION</span>
-          <span>TOTAL SUB-CATEGORIES</span>
+          <span>{t('category.table.description')}</span>
+          <span>{t('category.table.totalSub')}</span>
         </TableHeader>
-        <CardList>
-          <Card>
-            <span>Alimentação</span>
-            <span>3</span>
-            <div>
-              <Edit />
-              <Delete />
-            </div>
-          </Card>
-          <Card>
-            <span>Lazer</span>
-            <span>2</span>
-            <div>
-              <Edit />
-              <Delete />
-            </div>
-          </Card>
-          <Card>
-            <span>Animal de Estimação</span>
-            <span>4</span>
-            <div>
-              <Edit />
-              <Delete />
-            </div>
-          </Card>
-          <Card>
-            <span>Salário Mensal</span>
-            <span>2</span>
-            <div>
-              <Edit />
-              <Delete />
-            </div>
-          </Card>
-          <Card>
-            <span>Transferência</span>
-            <span>2</span>
-            <div>
-              <Edit />
-              <Delete />
-            </div>
-          </Card>
-        </CardList>
+        {loading ? (
+          <Loading />
+        ) : (
+            <CardList>
+              {categories.map(({ _id, description, subCategories }) => (
+                <Card key={_id}>
+                  <span>{description}</span>
+                  <span>{subCategories.length}</span>
+                  <div>
+                    <Edit />
+                    <Delete />
+                  </div>
+                </Card>
+              ))}
+            </CardList>
+          )
+        }
       </Table>
 
     </Content>

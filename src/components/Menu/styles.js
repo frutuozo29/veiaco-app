@@ -82,7 +82,7 @@ export const MenuItem = styled(Link)`
     background-color: #F4F6FC;
   }
   
-  ${({ active }) => active && `
+  ${({ actived }) => actived && `
     background-color: #F4F6FC;
     border-left: 4px solid #2E5BFF;
   `}

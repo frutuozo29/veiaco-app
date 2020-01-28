@@ -16,7 +16,8 @@ import { useState } from 'react'
 
 export default ({ open, gridArea }) => {
   const { t } = useTranslation()
-  const [menuActived, setMenuActived] = useState()
+
+  const [menuActived, setMenuActived] = useState(1)
 
   return (
     < MenuStyled gridArea={gridArea} open={open} >
@@ -29,7 +30,7 @@ export default ({ open, gridArea }) => {
       </MenuAvatar>
       <MenuList>
         <MenuItem
-          active={menuActived === 1}
+          actived={menuActived === 1 ? true : false}
           menuOpened={open}
           onClick={() => setMenuActived(1)}
           to='/Category'
@@ -38,7 +39,7 @@ export default ({ open, gridArea }) => {
           <span>{t('menu.menus.categories')}</span>
         </MenuItem>
         <MenuItem
-          active={menuActived === 2}
+          actived={menuActived === 2 ? true : false}
           menuOpened={open}
           onClick={() => setMenuActived(2)}
           to='/'
@@ -47,7 +48,7 @@ export default ({ open, gridArea }) => {
           <span>{t('menu.menus.transfers')}</span>
         </MenuItem>
         <MenuItem
-          active={menuActived === 3}
+          actived={menuActived === 3}
           menuOpened={open}
           onClick={() => setMenuActived(3)}
           to='/'
@@ -56,7 +57,7 @@ export default ({ open, gridArea }) => {
           <span>{t('menu.menus.accounts')}</span>
         </MenuItem>
         <MenuItem
-          active={menuActived === 4}
+          actived={menuActived === 4}
           menuOpened={open}
           onClick={() => setMenuActived(4)}
           to='/'

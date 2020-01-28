@@ -4,16 +4,14 @@ import React from 'react'
 import logo from '../../../assets/veiacoLogo.svg'
 
 // styles
-import { Container, Content, Forward, Backward, Logo } from './styles'
+import { Container, Forward, Backward, Logo } from './styles'
 
 export const Loading = () => {
   return (
     <Container>
-      <Content>
-        <Forward />
-        <Backward />
-        <Logo src={logo} alt='logo' />
-      </Content>
+      <Forward />
+      <Backward />
+      <Logo src={logo} alt='logo' />
     </Container>
   )
 }
