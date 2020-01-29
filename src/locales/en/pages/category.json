@@ -1,10 +1,17 @@
 {
   "title": "Categories",
   "table": {
-    "description": "DESCRIPTION",
-    "totalSub": "TOTAL SUB-CATEGORIES"
+    "name": "Name",
+    "totalSub": "Total sub-categories"
   },
   "form": {
-    "title_create": "Categories - Including"
+    "title": "Categories",
+    "including": "Including",
+    "updating": "Updating",
+    "name": "Name",
+    "typeCategory": "Type",
+    "subCategories": "Sub-categories",
+    "buttonSave": "Save",
+    "buttonCancel": "Cancel"
   }
 }

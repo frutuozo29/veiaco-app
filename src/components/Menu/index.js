@@ -63,7 +63,7 @@ export default ({ open, gridArea }) => {
           to='/'
         >
           <Releases />
-          <span>{t('menu.menus.releases')}</span>
+          <span>{t('menu.menus.transactions')}</span>
         </MenuItem>
       </MenuList>
     </MenuStyled >

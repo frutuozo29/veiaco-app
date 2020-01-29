@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Select from 'react-select'
+
 export const Content = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -26,7 +28,6 @@ export const SubTitle = styled.div`
   grid-template-columns: auto auto;
   padding: 6px;
   width: 100%;
-  border-bottom: 1px solid #8798AD;
 
   > button {
     justify-self: end;
@@ -41,8 +42,7 @@ export const Footer = styled.div`
 `
 
 export const PageTitle = styled.span`
-  font-size: 18px;
-  color: #000;  
+  font-size: 16px;
 `
 
 export const ButtonTitle = styled.button`
@@ -76,6 +76,11 @@ export const Table = styled.div`
   grid-gap: 8px;
 `
 
+export const InputContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+`
+
 export const TableHeader = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 80px;
@@ -103,7 +108,7 @@ export const Card = styled.div`
   padding: 0 6px;
 
   &:hover {
-    background-color: #FFF;
+    text-decoration: underline;
   }
 
   
@@ -122,4 +127,8 @@ export const Card = styled.div`
       cursor: pointer;
     }
   }
+`
+
+export const SelectOptions = styled(Select)`
+  min-height: 24px !important;
 `

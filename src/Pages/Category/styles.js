@@ -41,7 +41,7 @@ export const Card = styled.div`
   padding: 0 6px;
 
   &:hover {
-    background-color: #FFF;
+    text-decoration: underline;
   }
 
   
