@@ -7,7 +7,7 @@ export const MenuStyled = styled.section`
   display: grid;
   grid-template-columns: ${({ open }) => open ? '248px' : '72px'};
   grid-template-rows: auto 1fr;
-  grid-gap: 16px;
+  grid-gap: 48px;
   background-color: #FFF;
   max-width: 248px;
   width: ${({ open }) => open ? '248px' : '72px'};
@@ -82,7 +82,7 @@ export const MenuItem = styled(Link)`
     background-color: #F4F6FC;
   }
   
-  ${({ active }) => active && `
+  ${({ actived }) => actived && `
     background-color: #F4F6FC;
     border-left: 4px solid #2E5BFF;
   `}

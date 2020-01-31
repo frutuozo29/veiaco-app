@@ -5,12 +5,16 @@ import { Switch, Route } from 'react-router-dom'
 
 // components
 import Dashboard from '../components/Dashboard'
-import Categories from '../components/Categories'
+
+// pages
+import Category from '../Pages/Category'
+import CategoryForm from '../Pages/Category/CategoryForm'
 
 const Routes = () => (
   <Switch>
     <Route exact path='/' component={Dashboard} />
-    <Route exact path='/Categories' component={Categories} />
+    <Route exact path='/Category' component={Category} />
+    <Route exact path='/Category/Form' component={CategoryForm} />
     <Route exact path='/Accounts' component={Dashboard} />
     <Route exact path='*' component={Dashboard} />
   </Switch>

@@ -1,0 +1,18 @@
+{
+  "title": "Categorias",
+  "table": {
+    "name": "Nome",
+    "totalSub": "Total sub-categorias"
+  },
+  "form": {
+    "title": "Categorias",
+    "including": "Incluindo",
+    "updating": "Atualizando",
+    "name": "Nome",
+    "typeCategory": "Tipo",
+    "subCategories": "Sub-categorias",
+    "buttonSave": "Salvar",
+    "buttonCancel": "Cancelar",
+    "description": "Descrição"
+  }
+}
