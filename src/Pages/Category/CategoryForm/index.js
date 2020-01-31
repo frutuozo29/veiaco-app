@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 // react-i18n
 import { useTranslation } from 'react-i18next'
@@ -34,12 +34,18 @@ import {
 
 export default () => {
   const { t } = useTranslation()
+  const [category, setCategory] = useState({ name: '', subCategories: [] })
+  const [subCategoryName, setSubCategoryName] = useState('')
+  const [subCategoryType, setSubCategoryType] = useState('')
 
   const options = [
     { value: 'D', label: 'Despesa' },
     { value: 'R', label: 'Receita' }
   ]
 
+  useEffect(() => {
+    console.log(category)
+  }, [category])
 
   return (
     <Content>
@@ -47,21 +53,48 @@ export default () => {
         title={t('category.form.title')}
       />
       <Form>
-        <Input label={t('category.form.name')} />
+        <Input
+          label={t('category.form.name')}
+          value={category.name}
+          onChange={({ target: { value } }) => setCategory({ ...category, name: value })}
+        />
         <SubCategories>
           <SubTitle>
             <PageTitle>{t('category.form.subCategories')}</PageTitle>
-
           </SubTitle>
           <InputContainer>
             <Input
               placeholder={t('category.form.description')}
+              value={subCategoryName}
+              onChange={({ target: { value } }) => setSubCategoryName(value)}
             />
             <Select
               options={options}
+              selected={subCategoryType || ''}
               placeholder={t('category.form.typeCategory')}
+              onChange={({ value }) => setSubCategoryType(value)}
             />
-            <ButtonTitle>New</ButtonTitle>
+            <ButtonTitle
+              onClick={(event) => {
+                event.preventDefault()
+
+                setCategory({
+                  ...category,
+                  subCategories: [
+                    ...category.subCategories,
+                    {
+                      _id: category.subCategories.length + 1,
+                      description: subCategoryName,
+                      typeValue: subCategoryType
+                    }
+                  ]
+                })
+                setSubCategoryName('')
+                setSubCategoryType('D')
+              }}
+            >
+              New
+            </ButtonTitle>
           </InputContainer>
           <Table>
             <TableHeader>
@@ -69,27 +102,20 @@ export default () => {
               <span>{t('category.table.totalSub')}</span>
             </TableHeader>
             <CardList>
-              <Card>
-                <span>Cinema</span>
-                <span>Despesa</span>
-                <div>
-                  <Delete />
-                </div>
-              </Card>
-              <Card>
-                <span>Show</span>
-                <span>Despesa</span>
-                <div>
-                  <Delete />
-                </div>
-              </Card>
-              <Card>
-                <span>Praia</span>
-                <span>Despesa</span>
-                <div>
-                  <Delete />
-                </div>
-              </Card>
+              {category.subCategories.map(({ _id, description, typeValue }) => (
+                <Card>
+                  <span>{description}</span>
+                  <span>{(typeValue === 'D' && 'Despesa') || (typeValue === 'R' && 'Receita')}</span>
+                  <div>
+                    <Delete
+                      onClick={() => setCategory({
+                        ...category,
+                        subCategories: category.subCategories.filter((subCategory) => subCategory._id !== _id)
+                      })}
+                    />
+                  </div>
+                </Card>
+              ))}
             </CardList>
           </Table>
         </SubCategories>
