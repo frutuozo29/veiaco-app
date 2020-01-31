@@ -42,7 +42,7 @@ export default () => {
       />
       <Table>
         <TableHeader>
-          <span>{t('category.table.description')}</span>
+          <span>{t('category.table.name')}</span>
           <span>{t('category.table.totalSub')}</span>
         </TableHeader>
         {loading ? (

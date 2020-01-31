@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 // components
 import PageHeader from '../../../components/shared/PageHeader'
-
+import Select from 'react-select'
 
 // shared
 import Input from '../../../components/shared/Input'
@@ -28,8 +28,7 @@ import {
   TableHeader,
   CardList,
   Card,
-  InputContainer,
-  SelectOptions
+  InputContainer
 } from './styles'
 
 
@@ -40,6 +39,7 @@ export default () => {
     { value: 'D', label: 'Despesa' },
     { value: 'R', label: 'Receita' }
   ]
+
 
   return (
     <Content>
@@ -55,10 +55,9 @@ export default () => {
           </SubTitle>
           <InputContainer>
             <Input
-              height='24px'
-              placeholder={t('category.form.name')}
+              placeholder={t('category.form.description')}
             />
-            <SelectOptions
+            <Select
               options={options}
               placeholder={t('category.form.typeCategory')}
             />

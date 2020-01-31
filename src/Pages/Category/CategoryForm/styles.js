@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import Select from 'react-select'
 
 export const Content = styled.div`
   display: grid;
@@ -78,7 +77,14 @@ export const Table = styled.div`
 
 export const InputContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 160px auto;
+  grid-gap: 8px;
+  align-items: center;
+  width: min-content;
+
+  &:nth-child(2) {
+    width: min-content;
+  }
 `
 
 export const TableHeader = styled.div`
@@ -127,8 +133,4 @@ export const Card = styled.div`
       cursor: pointer;
     }
   }
-`
-
-export const SelectOptions = styled(Select)`
-  min-height: 24px !important;
 `

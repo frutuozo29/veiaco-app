@@ -12,6 +12,7 @@
     "typeCategory": "Type",
     "subCategories": "Sub-categories",
     "buttonSave": "Save",
-    "buttonCancel": "Cancel"
+    "buttonCancel": "Cancel",
+    "description": "Description"
   }
 }
