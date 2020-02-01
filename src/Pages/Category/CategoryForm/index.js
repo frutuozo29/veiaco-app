@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // react-i18n
 import { useTranslation } from 'react-i18next'
@@ -31,21 +31,30 @@ import {
   InputContainer
 } from './styles'
 
+// apollo client
+import { useMutation } from '@apollo/react-hooks'
 
-export default () => {
+// graphql
+import { CREATE_CATEGORY } from '../../../graphql/mutations/category'
+
+export default ({ history }) => {
   const { t } = useTranslation()
   const [category, setCategory] = useState({ name: '', subCategories: [] })
   const [subCategoryName, setSubCategoryName] = useState('')
   const [subCategoryType, setSubCategoryType] = useState('')
 
+  const [createCategory] = useMutation(CREATE_CATEGORY,
+    {
+      onCompleted: () => {
+        history.push('/category')
+      },
+      refetchQueries: ['GET_ALL_CATEGORIES']
+    })
+
   const options = [
     { value: 'D', label: 'Despesa' },
     { value: 'R', label: 'Receita' }
   ]
-
-  useEffect(() => {
-    console.log(category)
-  }, [category])
 
   return (
     <Content>
@@ -89,8 +98,9 @@ export default () => {
                     }
                   ]
                 })
+
                 setSubCategoryName('')
-                setSubCategoryType('D')
+                setSubCategoryType('')
               }}
             >
               New
@@ -103,7 +113,7 @@ export default () => {
             </TableHeader>
             <CardList>
               {category.subCategories.map(({ _id, description, typeValue }) => (
-                <Card>
+                <Card key={_id}>
                   <span>{description}</span>
                   <span>{(typeValue === 'D' && 'Despesa') || (typeValue === 'R' && 'Receita')}</span>
                   <div>
@@ -120,7 +130,21 @@ export default () => {
           </Table>
         </SubCategories>
         <Footer>
-          <Button width='64px'>{t('category.form.buttonSave')}</Button>
+          <Button
+            width='64px'
+            onClick={(e) => {
+              e.preventDefault()
+
+              createCategory({
+                variables: {
+                  name: category.name,
+                  subCategories: category.subCategories.map(({ description, typeValue }) => ({ description, typeValue }))
+                }
+              })
+            }}
+          >
+            {t('category.form.buttonSave')}
+          </Button>
           <ButtonLink>{t('category.form.buttonCancel')}</ButtonLink>
         </Footer>
       </Form>

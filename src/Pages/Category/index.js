@@ -49,9 +49,9 @@ export default () => {
           <Loading />
         ) : (
             <CardList>
-              {categories.map(({ _id, description, subCategories }) => (
+              {categories.map(({ _id, name, subCategories }) => (
                 <Card key={_id}>
-                  <span>{description}</span>
+                  <span>{name}</span>
                   <span>{subCategories.length}</span>
                   <div>
                     <Edit />
@@ -60,8 +60,7 @@ export default () => {
                 </Card>
               ))}
             </CardList>
-          )
-        }
+          )}
       </Table>
 
     </Content>
