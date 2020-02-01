@@ -4,8 +4,9 @@ export const GET_ALL_CATEGORIES = gql`
   query Get_All_Categories {
     categories {
       _id
-      description
+      name
       subCategories {
+        _id
         description
         typeValue
       }
