@@ -1,8 +1,10 @@
 {
   "title": "Categories",
+  "subTitle": "category maintenance",
   "table": {
     "name": "Name",
-    "totalSub": "Total sub-categories"
+    "totalSub": "Total sub-categories",
+    "valueType": "Value type"
   },
   "form": {
     "title": "Categories",

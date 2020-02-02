@@ -39,7 +39,7 @@ export default ({ history }) => {
     <Content>
       <Title
         title={t('category.title')}
-        subTitle='cadastro de categorias'
+        subTitle={t('category.subTitle')}
       />
       <Table>
         <TableHeader>

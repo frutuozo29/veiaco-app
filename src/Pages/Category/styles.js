@@ -7,7 +7,7 @@ export const Content = styled.div`
   width: 100%;
   height: 100%;
 
-  > svg {
+  > div:last-of-type {
     position: absolute;
     width: 42px;
     height: 42px;

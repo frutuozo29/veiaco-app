@@ -21,7 +21,6 @@ import {
   Form,
   Footer,
   SubCategories,
-  SubTitle,
   PageTitle,
   ButtonTitle,
   Table,
@@ -63,16 +62,16 @@ export default ({ history }) => {
       />
       <Form>
         <Input
+          required={true}
           label={t('category.form.name')}
           value={category.name}
           onChange={({ target: { value } }) => setCategory({ ...category, name: value })}
         />
         <SubCategories>
-          <SubTitle>
-            <PageTitle>{t('category.form.subCategories')}</PageTitle>
-          </SubTitle>
+          <PageTitle>{t('category.form.subCategories')}</PageTitle>
           <InputContainer>
             <Input
+              label={t('category.form.description')}
               placeholder={t('category.form.description')}
               value={subCategoryName}
               onChange={({ target: { value } }) => setSubCategoryName(value)}
@@ -104,50 +103,50 @@ export default ({ history }) => {
               New
             </ButtonTitle>
           </InputContainer>
-          <Table>
-            <TableHeader>
-              <span>{t('category.table.name')}</span>
-              <span>{t('category.table.totalSub')}</span>
-            </TableHeader>
-            <CardList>
-              {category.subCategories.map(({ _id, description, typeValue }) => (
-                <Card key={_id}>
-                  <span>{description}</span>
-                  <span>{(typeValue === 'D' && 'Despesa') || (typeValue === 'R' && 'Receita')}</span>
-                  <div>
-                    <Delete
-                      onClick={() => setCategory({
-                        ...category,
-                        subCategories: category.subCategories.filter((subCategory) => subCategory._id !== _id)
-                      })}
-                    />
-                  </div>
-                </Card>
-              ))}
-            </CardList>
-          </Table>
         </SubCategories>
-        <Footer>
-          <Button
-            width='64px'
-            onClick={() => {
-              createCategory({
-                variables: {
-                  name: category.name,
-                  subCategories: category.subCategories.map(({ description, typeValue }) => ({ description, typeValue }))
-                }
-              })
-            }}
-          >
-            {t('category.form.buttonSave')}
-          </Button>
-          <ButtonLink
-            onClick={() => history.push('/category')}
-          >
-            {t('category.form.buttonCancel')}
-          </ButtonLink>
-        </Footer>
+        <Table>
+          <TableHeader>
+            <span>{t('category.table.name')}</span>
+            <span>{t('category.table.valueType')}</span>
+          </TableHeader>
+          <CardList>
+            {category.subCategories.map(({ _id, description, typeValue }) => (
+              <Card key={_id}>
+                <span>{description}</span>
+                <span>{(typeValue === 'D' && 'Despesa') || (typeValue === 'R' && 'Receita')}</span>
+                <div>
+                  <Delete
+                    onClick={() => setCategory({
+                      ...category,
+                      subCategories: category.subCategories.filter((subCategory) => subCategory._id !== _id)
+                    })}
+                  />
+                </div>
+              </Card>
+            ))}
+          </CardList>
+        </Table>
       </Form>
+      <Footer>
+        <Button
+          width='64px'
+          onClick={() => {
+            createCategory({
+              variables: {
+                name: category.name,
+                subCategories: category.subCategories.map(({ description, typeValue }) => ({ description, typeValue }))
+              }
+            })
+          }}
+        >
+          {t('category.form.buttonSave')}
+        </Button>
+        <ButtonLink
+          onClick={() => history.push('/category')}
+        >
+          {t('category.form.buttonCancel')}
+        </ButtonLink>
+      </Footer>
     </Content>
   )
 }

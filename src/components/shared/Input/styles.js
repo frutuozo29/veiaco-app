@@ -10,6 +10,10 @@ export const Label = styled.label`
   color: #8798AD;
   font-size: 12px;
   margin-bottom: 4px;
+
+  > span {
+    color: red;
+  }
 `
 
 export const InputStyled = styled.input`
