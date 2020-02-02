@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 // components
-import PageHeader from '../../../components/shared/PageHeader'
+import Title from '../../../components/shared/Title'
 import Select from 'react-select'
 
 // shared
@@ -58,7 +58,7 @@ export default ({ history }) => {
 
   return (
     <Content>
-      <PageHeader
+      <Title
         title={t('category.form.title')}
       />
       <Form>
@@ -84,9 +84,7 @@ export default ({ history }) => {
               onChange={({ value }) => setSubCategoryType(value)}
             />
             <ButtonTitle
-              onClick={(event) => {
-                event.preventDefault()
-
+              onClick={() => {
                 setCategory({
                   ...category,
                   subCategories: [
@@ -132,9 +130,7 @@ export default ({ history }) => {
         <Footer>
           <Button
             width='64px'
-            onClick={(e) => {
-              e.preventDefault()
-
+            onClick={() => {
               createCategory({
                 variables: {
                   name: category.name,
@@ -145,7 +141,11 @@ export default ({ history }) => {
           >
             {t('category.form.buttonSave')}
           </Button>
-          <ButtonLink>{t('category.form.buttonCancel')}</ButtonLink>
+          <ButtonLink
+            onClick={() => history.push('/category')}
+          >
+            {t('category.form.buttonCancel')}
+          </ButtonLink>
         </Footer>
       </Form>
     </Content>

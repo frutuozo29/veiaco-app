@@ -8,7 +8,7 @@ export const ContentInput = styled.div`
 
 export const Label = styled.label`
   color: #8798AD;
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 4px;
 `
 
@@ -19,7 +19,7 @@ export const InputStyled = styled.input`
   border-radius: 4px;
   width: ${props => props.width || 220}px;
   height: ${props => props.height || 28}px;
-  font-size: 14px;
+  font-size: 12px;
   
   &:focus {
     outline-color: #2E5BFF;

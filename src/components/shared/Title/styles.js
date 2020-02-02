@@ -11,9 +11,14 @@ export const Content = styled.div`
   height: 48px;
 `
 
-export const PageTitle = styled.span`
+export const TitleStyled = styled.p`
   font-size: 26px;
-  color: #000;  
+  color: #000;
+
+  > span {
+    font-size: 16px;
+    color: #8798AD;
+  }
 `
 
 export const Button = styled(Link)`

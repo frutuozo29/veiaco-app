@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
+
+import PropTypes from 'prop-types'
 
 import { ContentInput, Label, InputStyled } from './styles'
 
@@ -15,4 +17,9 @@ export const Input = ({ label, placeholder, ...props }) => {
   )
 }
 
-export default Input
+Input.propTypes = {
+  label: PropTypes.string,
+  placeholder: PropTypes.string
+}
+
+export default memo(Input)

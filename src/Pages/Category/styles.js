@@ -6,12 +6,21 @@ export const Content = styled.div`
   grid-gap: 24px;
   width: 100%;
   height: 100%;
+
+  > svg {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    bottom: 28px;
+    right: 28px;
+  }
 `
 
 export const Table = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   grid-gap: 8px;
+  overflow: auto;
 `
 
 export const TableHeader = styled.div`
