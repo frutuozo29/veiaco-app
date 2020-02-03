@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // react-i18n
 import { useTranslation } from 'react-i18next'
 
 // components
-import PageHeader from '../../../components/shared/PageHeader'
-import Select from 'react-select'
+import Title from '../../../components/shared/Title'
 
 // shared
 import Input from '../../../components/shared/Input'
 import Button from '../../../components/shared/Button'
 import ButtonLink from '../../../components/shared/ButtonLink'
+import RadioGroup from '../../../components/shared/RadioGroup'
+import Radio from '../../../components/shared/Radio'
+import ButtonIcon from '../../../components/shared/ButtonIcon'
 
-
+// Icons
 import { ReactComponent as Delete } from '../../../assets/icons/delete.svg'
 
 // styles
@@ -21,7 +23,6 @@ import {
   Form,
   Footer,
   SubCategories,
-  SubTitle,
   PageTitle,
   ButtonTitle,
   Table,
@@ -31,53 +32,65 @@ import {
   InputContainer
 } from './styles'
 
+// apollo client
+import { useMutation } from '@apollo/react-hooks'
 
-export default () => {
+// graphql
+import { CREATE_CATEGORY } from '../../../graphql/mutations/category'
+
+export default ({ history }) => {
   const { t } = useTranslation()
   const [category, setCategory] = useState({ name: '', subCategories: [] })
   const [subCategoryName, setSubCategoryName] = useState('')
   const [subCategoryType, setSubCategoryType] = useState('')
 
-  const options = [
-    { value: 'D', label: 'Despesa' },
-    { value: 'R', label: 'Receita' }
-  ]
+  const [createCategory] = useMutation(CREATE_CATEGORY,
+    {
+      onCompleted: () => {
+        history.push('/category')
+      },
+      refetchQueries: ['GET_ALL_CATEGORIES']
+    })
 
-  useEffect(() => {
-    console.log(category)
-  }, [category])
+  const options = [
+    { label: t('category.form.options.recipe'), value: 'R' },
+    { label: t('category.form.options.expense'), value: 'D' }
+  ]
 
   return (
     <Content>
-      <PageHeader
+      <Title
         title={t('category.form.title')}
       />
       <Form>
         <Input
+          required={true}
           label={t('category.form.name')}
           value={category.name}
           onChange={({ target: { value } }) => setCategory({ ...category, name: value })}
         />
         <SubCategories>
-          <SubTitle>
-            <PageTitle>{t('category.form.subCategories')}</PageTitle>
-          </SubTitle>
+          <PageTitle>{t('category.form.subCategories')}</PageTitle>
           <InputContainer>
             <Input
+              label={t('category.form.description')}
               placeholder={t('category.form.description')}
               value={subCategoryName}
               onChange={({ target: { value } }) => setSubCategoryName(value)}
             />
-            <Select
-              options={options}
-              selected={subCategoryType || ''}
-              placeholder={t('category.form.typeCategory')}
-              onChange={({ value }) => setSubCategoryType(value)}
-            />
-            <ButtonTitle
-              onClick={(event) => {
-                event.preventDefault()
-
+            <RadioGroup
+              label={t('category.form.typeCategory')}
+            >
+              {options.map(({ label, value }) => (
+                <Radio
+                  label={label}
+                  value={value}
+                  onClick={() => setSubCategoryType(value)}
+                />
+              ))}
+            </RadioGroup>
+            <ButtonIcon
+              onClick={() => {
                 setCategory({
                   ...category,
                   subCategories: [
@@ -89,41 +102,56 @@ export default () => {
                     }
                   ]
                 })
+
                 setSubCategoryName('')
-                setSubCategoryType('D')
+                setSubCategoryType('R')
               }}
-            >
-              New
-            </ButtonTitle>
+            />
           </InputContainer>
-          <Table>
-            <TableHeader>
-              <span>{t('category.table.name')}</span>
-              <span>{t('category.table.totalSub')}</span>
-            </TableHeader>
-            <CardList>
-              {category.subCategories.map(({ _id, description, typeValue }) => (
-                <Card>
-                  <span>{description}</span>
-                  <span>{(typeValue === 'D' && 'Despesa') || (typeValue === 'R' && 'Receita')}</span>
-                  <div>
-                    <Delete
-                      onClick={() => setCategory({
-                        ...category,
-                        subCategories: category.subCategories.filter((subCategory) => subCategory._id !== _id)
-                      })}
-                    />
-                  </div>
-                </Card>
-              ))}
-            </CardList>
-          </Table>
         </SubCategories>
-        <Footer>
-          <Button width='64px'>{t('category.form.buttonSave')}</Button>
-          <ButtonLink>{t('category.form.buttonCancel')}</ButtonLink>
-        </Footer>
+        <Table>
+          <TableHeader>
+            <span>{t('category.form.description')}</span>
+            <span>{t('category.form.typeCategory')}</span>
+          </TableHeader>
+          <CardList>
+            {category.subCategories.map(({ _id, description, typeValue }) => (
+              <Card key={_id}>
+                <span>{description}</span>
+                <span>{(typeValue === 'D' && 'Despesa') || (typeValue === 'R' && 'Receita')}</span>
+                <div>
+                  <Delete
+                    onClick={() => setCategory({
+                      ...category,
+                      subCategories: category.subCategories.filter((subCategory) => subCategory._id !== _id)
+                    })}
+                  />
+                </div>
+              </Card>
+            ))}
+          </CardList>
+        </Table>
       </Form>
+      <Footer>
+        <Button
+          width='64px'
+          onClick={() => {
+            createCategory({
+              variables: {
+                name: category.name,
+                subCategories: category.subCategories.map(({ description, typeValue }) => ({ description, typeValue }))
+              }
+            })
+          }}
+        >
+          {t('category.form.buttonSave')}
+        </Button>
+        <ButtonLink
+          onClick={() => history.push('/category')}
+        >
+          {t('category.form.buttonCancel')}
+        </ButtonLink>
+      </Footer>
     </Content>
   )
 }

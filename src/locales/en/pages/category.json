@@ -1,5 +1,6 @@
 {
   "title": "Categories",
+  "subTitle": "category maintenance",
   "table": {
     "name": "Name",
     "totalSub": "Total sub-categories"
@@ -13,6 +14,10 @@
     "subCategories": "Sub-categories",
     "buttonSave": "Save",
     "buttonCancel": "Cancel",
-    "description": "Description"
+    "description": "Description",
+    "options": {
+      "expense": "Expense",
+      "recipe": "Recipe"
+    }
   }
 }

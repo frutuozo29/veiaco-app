@@ -4,7 +4,7 @@ import { ButtonStyled } from './styles'
 
 export const Button = ({ ...props }) => {
   return (
-    <ButtonStyled {...props} />
+    <ButtonStyled type="button" {...props} />
   )
 }
 

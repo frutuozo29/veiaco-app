@@ -11,26 +11,15 @@ export const Content = styled.div`
 
 export const Form = styled.form`
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-gap: 48px;
+  grid-template-rows: auto auto 1fr;
+  grid-gap: 32px;
   height: min-content;
 `
 
 export const SubCategories = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr;
-  grid-gap: 26px;
-`
-
-export const SubTitle = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  padding: 6px;
-  width: 100%;
-
-  > button {
-    justify-self: end;
-  }
+  grid-template-rows: auto auto;
+  grid-gap: 8px;
 `
 
 export const Footer = styled.div`
@@ -77,13 +66,14 @@ export const Table = styled.div`
 
 export const InputContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 160px auto;
-  grid-gap: 8px;
+  grid-template-columns: auto auto auto;
+  grid-gap: 22px;
   align-items: center;
   width: min-content;
 
-  &:nth-child(2) {
-    width: min-content;
+  > div:last-of-type {
+    width: 24px;
+    align-self: flex-end;
   }
 `
 

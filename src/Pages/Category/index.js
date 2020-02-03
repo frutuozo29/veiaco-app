@@ -7,8 +7,9 @@ import { useQuery } from '@apollo/react-hooks'
 import { GET_ALL_CATEGORIES } from '../../graphql/queries/category'
 
 // components
-import PageHeader from '../../components/shared/PageHeader'
+import Title from '../../components/shared/Title'
 import Loading from '../../components/shared/Loading'
+import ButtonIcon from '../../components/shared/ButtonIcon'
 
 // toastify
 import { toast } from 'react-toastify'
@@ -23,7 +24,7 @@ import { ReactComponent as Delete } from '../../assets/icons/delete.svg'
 // react-i18n
 import { useTranslation } from 'react-i18next'
 
-export default () => {
+export default ({ history }) => {
   const { t } = useTranslation()
 
   const { loading, error, data: { categories = [] } = {} } = useQuery(GET_ALL_CATEGORIES)
@@ -36,9 +37,9 @@ export default () => {
 
   return (
     <Content>
-      <PageHeader
+      <Title
         title={t('category.title')}
-        to='/Category/Form'
+        subTitle={t('category.subTitle')}
       />
       <Table>
         <TableHeader>
@@ -49,9 +50,9 @@ export default () => {
           <Loading />
         ) : (
             <CardList>
-              {categories.map(({ _id, description, subCategories }) => (
+              {categories.map(({ _id, name, subCategories }) => (
                 <Card key={_id}>
-                  <span>{description}</span>
+                  <span>{name}</span>
                   <span>{subCategories.length}</span>
                   <div>
                     <Edit />
@@ -60,10 +61,11 @@ export default () => {
                 </Card>
               ))}
             </CardList>
-          )
-        }
+          )}
       </Table>
-
+      <ButtonIcon
+        onClick={() => history.push('/category/form')}
+      />
     </Content>
   )
 }

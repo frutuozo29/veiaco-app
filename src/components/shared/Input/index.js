@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
+
+import PropTypes from 'prop-types'
 
 import { ContentInput, Label, InputStyled } from './styles'
 
-export const Input = ({ label, placeholder, ...props }) => {
+export const Input = ({ label, placeholder, required, ...props }) => {
   return (
     <ContentInput>
-      <Label>{label}</Label>
+      <Label>{label} {!!required && <span>*</span>}</Label>
       <InputStyled
         placeholder={placeholder}
         aria-label={label}
@@ -15,4 +17,10 @@ export const Input = ({ label, placeholder, ...props }) => {
   )
 }
 
-export default Input
+Input.propTypes = {
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  required: PropTypes.bool
+}
+
+export default memo(Input)
