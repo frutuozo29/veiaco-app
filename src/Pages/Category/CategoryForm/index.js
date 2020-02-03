@@ -24,7 +24,6 @@ import {
   Footer,
   SubCategories,
   PageTitle,
-  ButtonTitle,
   Table,
   TableHeader,
   CardList,

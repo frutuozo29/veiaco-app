@@ -33,31 +33,6 @@ export const PageTitle = styled.span`
   font-size: 16px;
 `
 
-export const ButtonTitle = styled.button`
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  background-color: #2E5BFF;
-  border: none;
-  color: #FFF;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-  width: 46px;
-  height: 26px;
-  text-decoration: none;
-
-  &:hover {
-    box-shadow: 0 0 3px 0 #FFF;
-  }
-
-  &:active {
-    box-shadow: 0 0 3px 0 #FFF inset;
-  }
-`
-
 export const Table = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
