@@ -3,8 +3,7 @@
   "subTitle": "manutenção de categorias",
   "table": {
     "name": "Nome",
-    "totalSub": "Total sub-categorias",
-    "valueType": "Tipo do valor"
+    "totalSub": "Total sub-categorias"
   },
   "form": {
     "title": "Categorias",
@@ -15,6 +14,10 @@
     "subCategories": "Sub-categorias",
     "buttonSave": "Salvar",
     "buttonCancel": "Cancelar",
-    "description": "Descrição"
+    "description": "Descrição",
+    "options": {
+      "expense": "Despesa",
+      "recipe": "Receita"
+    }
   }
 }

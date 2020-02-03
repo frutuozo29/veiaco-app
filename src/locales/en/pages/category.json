@@ -3,8 +3,7 @@
   "subTitle": "category maintenance",
   "table": {
     "name": "Name",
-    "totalSub": "Total sub-categories",
-    "valueType": "Value type"
+    "totalSub": "Total sub-categories"
   },
   "form": {
     "title": "Categories",
@@ -15,6 +14,10 @@
     "subCategories": "Sub-categories",
     "buttonSave": "Save",
     "buttonCancel": "Cancel",
-    "description": "Description"
+    "description": "Description",
+    "options": {
+      "expense": "Expense",
+      "recipe": "Recipe"
+    }
   }
 }

@@ -5,14 +5,16 @@ import { useTranslation } from 'react-i18next'
 
 // components
 import Title from '../../../components/shared/Title'
-import Select from 'react-select'
 
 // shared
 import Input from '../../../components/shared/Input'
 import Button from '../../../components/shared/Button'
 import ButtonLink from '../../../components/shared/ButtonLink'
+import RadioGroup from '../../../components/shared/RadioGroup'
+import Radio from '../../../components/shared/Radio'
+import ButtonIcon from '../../../components/shared/ButtonIcon'
 
-
+// Icons
 import { ReactComponent as Delete } from '../../../assets/icons/delete.svg'
 
 // styles
@@ -51,8 +53,8 @@ export default ({ history }) => {
     })
 
   const options = [
-    { value: 'D', label: 'Despesa' },
-    { value: 'R', label: 'Receita' }
+    { label: t('category.form.options.recipe'), value: 'R' },
+    { label: t('category.form.options.expense'), value: 'D' }
   ]
 
   return (
@@ -76,13 +78,18 @@ export default ({ history }) => {
               value={subCategoryName}
               onChange={({ target: { value } }) => setSubCategoryName(value)}
             />
-            <Select
-              options={options}
-              selected={subCategoryType || ''}
-              placeholder={t('category.form.typeCategory')}
-              onChange={({ value }) => setSubCategoryType(value)}
-            />
-            <ButtonTitle
+            <RadioGroup
+              label={t('category.form.typeCategory')}
+            >
+              {options.map(({ label, value }) => (
+                <Radio
+                  label={label}
+                  value={value}
+                  onClick={() => setSubCategoryType(value)}
+                />
+              ))}
+            </RadioGroup>
+            <ButtonIcon
               onClick={() => {
                 setCategory({
                   ...category,
@@ -97,17 +104,15 @@ export default ({ history }) => {
                 })
 
                 setSubCategoryName('')
-                setSubCategoryType('')
+                setSubCategoryType('R')
               }}
-            >
-              New
-            </ButtonTitle>
+            />
           </InputContainer>
         </SubCategories>
         <Table>
           <TableHeader>
-            <span>{t('category.table.name')}</span>
-            <span>{t('category.table.valueType')}</span>
+            <span>{t('category.form.description')}</span>
+            <span>{t('category.form.typeCategory')}</span>
           </TableHeader>
           <CardList>
             {category.subCategories.map(({ _id, description, typeValue }) => (

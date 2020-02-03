@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Content = styled.div`
   display: grid;
+  position: relative;
   grid-template-rows: auto 1fr;
   grid-gap: 24px;
   width: 100%;
@@ -11,7 +12,7 @@ export const Content = styled.div`
     position: absolute;
     width: 42px;
     height: 42px;
-    bottom: 28px;
+    bottom: -24px;
     right: 28px;
   }
 `

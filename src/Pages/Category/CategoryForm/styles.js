@@ -66,13 +66,14 @@ export const Table = styled.div`
 
 export const InputContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 160px auto;
-  grid-gap: 8px;
+  grid-template-columns: auto auto auto;
+  grid-gap: 22px;
   align-items: center;
   width: min-content;
 
-  &:nth-child(2) {
-    width: min-content;
+  > div:last-of-type {
+    width: 24px;
+    align-self: flex-end;
   }
 `
 

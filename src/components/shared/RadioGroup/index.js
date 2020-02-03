@@ -1,10 +1,27 @@
 import React, { memo } from 'react'
 
-export const RadioGroup = () => {
+// prop-types
+import PropTypes from 'prop-types'
+
+
+// styles
+import { Container, ContentChildren, Label } from './styles'
+
+export const RadioGroup = ({ label, children }) => {
 
   return (
-    <div></div>
+    <Container >
+      <Label>{label}</Label>
+      <ContentChildren total={children.length}>
+        {children}
+      </ContentChildren>
+    </Container>
   )
+}
+
+RadioGroup.propTypes = {
+  label: PropTypes.string.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired
 }
 
 export default memo(RadioGroup)

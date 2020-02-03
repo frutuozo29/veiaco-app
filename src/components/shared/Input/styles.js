@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const ContentInput = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 6px 0;
 `
 
 export const Label = styled.label`
