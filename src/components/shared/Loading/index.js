@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 // logo
 import logo from '../../../assets/veiacoLogo.svg'
@@ -16,4 +16,4 @@ export const Loading = () => {
   )
 }
 
-export default Loading
+export default memo(Loading)

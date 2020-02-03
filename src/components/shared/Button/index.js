@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { ButtonStyled } from './styles'
 
@@ -8,4 +8,4 @@ export const Button = ({ ...props }) => {
   )
 }
 
-export default Button
+export default memo(Button)

@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 // styles
 import { Content, PageTitle } from './styles'
 
-export default ({ title }) => {
+export default CardGrid = ({ title }) => (
+  <Content>
+    <PageTitle>{title}</PageTitle>
+  </Content>
+)
 
-  return (
-    <Content>
-      <PageTitle>{title}</PageTitle>
-    </Content>
-  )
-}
+export default memo(CardGrid)
